@@ -714,14 +714,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1644867024}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89c6ae1146142164ca5e499d18f0e232, type: 3}
+  m_Script: {fileID: 0}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FPController
-  moveSpeed: 5
-  gravity: -9.81
-  cameraTransform: {fileID: 148791281}
-  lookSensitivity: 2
-  verticalLookLimit: 90
 --- !u!114 &1644867032
 MonoBehaviour:
   m_ObjectHideFlags: 0
