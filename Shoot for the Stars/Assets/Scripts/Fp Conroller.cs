@@ -1,6 +1,11 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
+using System.Collections;
+using System.Collections.Generic;
+
 public class FPController : MonoBehaviour
+
 {
     [Header("Movement Settings")]
     public float moveSpeed = 5f;
@@ -15,13 +20,22 @@ public class FPController : MonoBehaviour
     [Header("Shooting")]
     public GameObject bulletPrefab;
     public Transform gunPoint;
-    public float bulletForce = 200f;
+    public float bulletForce = 700f;
 
     [Header("Crouch Settings")]
     public float crouchHeight = 1f;
     public float standHeight = 2f;
     public float crouchSpeed = 2.5f;
     private float originalMoveSpeed;
+
+    [Header("Dialogue")]
+    public float interactRange = 5f;
+    public LayerMask npcLayer;
+    public GameObject dialogueUI;
+    public TMP_Text dialogueText;
+
+
+
 
     private CharacterController controller;
     private Vector2 moveInput;
@@ -130,6 +144,56 @@ public class FPController : MonoBehaviour
         }
     }
 
+    public void onDialogue(InputAction.CallbackContext context)
+    {
+       if (context.performed)
+        {
+            Dialogue();
+        }
+            }
+        
+    
+    private NPC currentNPC;
+    private int dialogueIndex = 0;
+    private bool inDialogue = false;
+
+    private void Dialogue()
+    {
+if (!inDialogue)
+        {
+            Collider [] hits = Physics .OverlapSphere(transform.position, interactRange, npcLayer);
+            if (hits.Length > 0)
+            {
+                NPC npc = hits [0].GetComponent<NPC>();
+                if (npc != null)
+                {
+                    currentNPC = npc;
+                    dialogueIndex = 0;
+                    inDialogue = true;
+                    dialogueUI.SetActive(true);
+                    ShowLine();
+                }
+            }
+        }
+else
+        {
+            dialogueIndex++;
+            if (dialogueIndex >= currentNPC.dialogueLines.Length)
+            {
+                inDialogue = false;
+                dialogueUI.SetActive(false);
+            }
+            else
+            {
+                ShowLine();
+            }
+        }
+    }
+private void ShowLine()
+    {
+        DialogueLine line = currentNPC.dialogueLines[dialogueIndex];
+        dialogueText.text = $"{line.SpeakerName}: {line.text}";
+    }
     private void Shoot()
     {
         if (bulletPrefab != null && gunPoint != null)
