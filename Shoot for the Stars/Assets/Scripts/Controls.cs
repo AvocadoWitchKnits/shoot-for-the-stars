@@ -136,6 +136,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Toggle Menu"",
+                    ""type"": ""Button"",
+                    ""id"": ""36bc6a97-81b1-4452-b1f9-053888d2ef6e"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -391,6 +400,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Dialogue"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8effdc82-ffdc-4e3b-bf64-392f8f735e59"",
+                    ""path"": ""<Keyboard>/t"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Toggle Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -432,6 +452,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
         m_Player_Dialogue = m_Player.FindAction("Dialogue", throwIfNotFound: true);
+        m_Player_ToggleMenu = m_Player.FindAction("Toggle Menu", throwIfNotFound: true);
     }
 
     ~@Controls()
@@ -517,6 +538,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Shoot;
     private readonly InputAction m_Player_Dialogue;
+    private readonly InputAction m_Player_ToggleMenu;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -548,6 +570,10 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Dialogue".
         /// </summary>
         public InputAction @Dialogue => m_Wrapper.m_Player_Dialogue;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/ToggleMenu".
+        /// </summary>
+        public InputAction @ToggleMenu => m_Wrapper.m_Player_ToggleMenu;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -589,6 +615,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Dialogue.started += instance.OnDialogue;
             @Dialogue.performed += instance.OnDialogue;
             @Dialogue.canceled += instance.OnDialogue;
+            @ToggleMenu.started += instance.OnToggleMenu;
+            @ToggleMenu.performed += instance.OnToggleMenu;
+            @ToggleMenu.canceled += instance.OnToggleMenu;
         }
 
         /// <summary>
@@ -615,6 +644,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Dialogue.started -= instance.OnDialogue;
             @Dialogue.performed -= instance.OnDialogue;
             @Dialogue.canceled -= instance.OnDialogue;
+            @ToggleMenu.started -= instance.OnToggleMenu;
+            @ToggleMenu.performed -= instance.OnToggleMenu;
+            @ToggleMenu.canceled -= instance.OnToggleMenu;
         }
 
         /// <summary>
@@ -716,5 +748,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnDialogue(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Toggle Menu" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnToggleMenu(InputAction.CallbackContext context);
     }
 }

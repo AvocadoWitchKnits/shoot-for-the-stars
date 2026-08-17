@@ -3,6 +3,8 @@ using UnityEngine.InputSystem;
 using TMPro;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
+using Unity.VisualScripting;
 
 public class FPController : MonoBehaviour
 
@@ -28,19 +30,19 @@ public class FPController : MonoBehaviour
     public float crouchSpeed = 2.5f;
     private float originalMoveSpeed;
 
+    [Header("Toggle Menu")]
+    public Toggle ToggleMenu;
+
     [Header("Dialogue")]
     public float interactRange = 5f;
     public LayerMask npcLayer;
     public GameObject dialogueUI;
     public TMP_Text dialogueText;
 
-
-
-
     private CharacterController controller;
     private Vector2 moveInput;
     private Vector2 lookInput;
-    private Vector3 velocity;     // Stores the player's current vertical movement, including gravity.
+    private Vector3 velocity;
     private float verticalRotation = 0f;
 
     // Awake runs once when the GameObject is first loaded.
@@ -144,44 +146,69 @@ public class FPController : MonoBehaviour
         }
     }
 
-    public void onDialogue(InputAction.CallbackContext context)
+    public void OnDialogue(InputAction.CallbackContext context)
     {
-       if (context.performed)
+        if (context.performed)
         {
             Dialogue();
         }
-            }
-        
-    
+    }
+
+    public void OnToggleMenu(InputAction.CallbackContext context)
+    {
+        if (context.performed && ToggleMenu != null)
+        {
+            ToggleMenu.isOn = !ToggleMenu.isOn;
+        }
+    }
+
     private NPC currentNPC;
     private int dialogueIndex = 0;
     private bool inDialogue = false;
 
     private void Dialogue()
     {
-if (!inDialogue)
+        if (!inDialogue)
         {
-            Collider [] hits = Physics .OverlapSphere(transform.position, interactRange, npcLayer);
+            Collider[] hits = Physics.OverlapSphere(transform.position, interactRange, npcLayer);
             if (hits.Length > 0)
             {
-                NPC npc = hits [0].GetComponent<NPC>();
+                NPC npc = hits[0].GetComponent<NPC>();
                 if (npc != null)
                 {
                     currentNPC = npc;
                     dialogueIndex = 0;
                     inDialogue = true;
-                    dialogueUI.SetActive(true);
+
+                    if (dialogueUI != null)
+                    {
+                        dialogueUI.SetActive(true);
+                    }
+
                     ShowLine();
                 }
             }
         }
-else
+        else
         {
+            if (currentNPC == null)
+            {
+                inDialogue = false;
+                if (dialogueUI != null)
+                {
+                    dialogueUI.SetActive(false);
+                }
+                return;
+            }
+
             dialogueIndex++;
             if (dialogueIndex >= currentNPC.dialogueLines.Length)
             {
                 inDialogue = false;
-                dialogueUI.SetActive(false);
+                if (dialogueUI != null)
+                {
+                    dialogueUI.SetActive(false);
+                }
             }
             else
             {
@@ -189,26 +216,29 @@ else
             }
         }
     }
-private void ShowLine()
+
+    private void ShowLine()
     {
+        if (currentNPC == null || dialogueText == null)
+            return;
+
+        if (dialogueIndex < 0 || dialogueIndex >= currentNPC.dialogueLines.Length)
+            return;
+
         DialogueLine line = currentNPC.dialogueLines[dialogueIndex];
         dialogueText.text = $"{line.SpeakerName}: {line.text}";
     }
+
     private void Shoot()
     {
         if (bulletPrefab != null && gunPoint != null)
         {
-            GameObject bullet = Instantiate(
-                bulletPrefab,
-                gunPoint.position,
-                gunPoint.rotation
-            );
-
+            GameObject bullet = Instantiate(bulletPrefab, gunPoint.position, gunPoint.rotation);
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
 
             if (rb != null)
             {
-                rb.AddForce(gunPoint.forward * bulletForce); // Adjust force value as needed
+                rb.AddForce(gunPoint.forward * bulletForce);
             }
         }
     }
