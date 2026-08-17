@@ -59,6 +59,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Quest Tracker",
+                    "type": "Button",
+                    "id": "6433456e-3815-4853-811a-0c22a970fb32",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -318,11 +327,22 @@
                 {
                     "name": "",
                     "id": "8effdc82-ffdc-4e3b-bf64-392f8f735e59",
-                    "path": "<Keyboard>/t",
+                    "path": "<Mouse>/middleButton",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard",
                     "action": "Toggle Menu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "38d984f3-4fcf-469c-aadc-28c923c4ad96",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard",
+                    "action": "Quest Tracker",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using Unity.VisualScripting;
+using UnityEngine.EventSystems;
 
 public class FPController : MonoBehaviour
 
@@ -50,8 +51,8 @@ public class FPController : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         originalMoveSpeed = moveSpeed;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
     private void Update()
     {
@@ -161,6 +162,7 @@ public class FPController : MonoBehaviour
             ToggleMenu.isOn = !ToggleMenu.isOn;
         }
     }
+   
 
     private NPC currentNPC;
     private int dialogueIndex = 0;
@@ -231,6 +233,8 @@ public class FPController : MonoBehaviour
 
     private void Shoot()
     {
+        
+
         if (bulletPrefab != null && gunPoint != null)
         {
             GameObject bullet = Instantiate(bulletPrefab, gunPoint.position, gunPoint.rotation);

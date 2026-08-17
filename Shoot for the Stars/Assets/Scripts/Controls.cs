@@ -145,6 +145,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Quest Tracker"",
+                    ""type"": ""Button"",
+                    ""id"": ""6433456e-3815-4853-811a-0c22a970fb32"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -404,11 +413,22 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""8effdc82-ffdc-4e3b-bf64-392f8f735e59"",
-                    ""path"": ""<Keyboard>/t"",
+                    ""path"": ""<Mouse>/middleButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard"",
                     ""action"": ""Toggle Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""38d984f3-4fcf-469c-aadc-28c923c4ad96"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Quest Tracker"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -453,6 +473,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
         m_Player_Dialogue = m_Player.FindAction("Dialogue", throwIfNotFound: true);
         m_Player_ToggleMenu = m_Player.FindAction("Toggle Menu", throwIfNotFound: true);
+        m_Player_QuestTracker = m_Player.FindAction("Quest Tracker", throwIfNotFound: true);
     }
 
     ~@Controls()
@@ -539,6 +560,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Shoot;
     private readonly InputAction m_Player_Dialogue;
     private readonly InputAction m_Player_ToggleMenu;
+    private readonly InputAction m_Player_QuestTracker;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -574,6 +596,10 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/ToggleMenu".
         /// </summary>
         public InputAction @ToggleMenu => m_Wrapper.m_Player_ToggleMenu;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/QuestTracker".
+        /// </summary>
+        public InputAction @QuestTracker => m_Wrapper.m_Player_QuestTracker;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -618,6 +644,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @ToggleMenu.started += instance.OnToggleMenu;
             @ToggleMenu.performed += instance.OnToggleMenu;
             @ToggleMenu.canceled += instance.OnToggleMenu;
+            @QuestTracker.started += instance.OnQuestTracker;
+            @QuestTracker.performed += instance.OnQuestTracker;
+            @QuestTracker.canceled += instance.OnQuestTracker;
         }
 
         /// <summary>
@@ -647,6 +676,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @ToggleMenu.started -= instance.OnToggleMenu;
             @ToggleMenu.performed -= instance.OnToggleMenu;
             @ToggleMenu.canceled -= instance.OnToggleMenu;
+            @QuestTracker.started -= instance.OnQuestTracker;
+            @QuestTracker.performed -= instance.OnQuestTracker;
+            @QuestTracker.canceled -= instance.OnQuestTracker;
         }
 
         /// <summary>
@@ -755,5 +787,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnToggleMenu(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Quest Tracker" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnQuestTracker(InputAction.CallbackContext context);
     }
 }
