@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
+
 [RequireComponent(typeof(Collider))]
 public class Inventory : MonoBehaviour
 {
+
+
     [Header("References")]
     [SerializeField]
     InventoryUI ui;
@@ -18,20 +21,24 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     SerializedDictionary<string, Item> inventory = new();
 
-    public void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("DroppedItem"))
-        {
-            var droppedItem = other.GetComponent<DroppedItem>();
-            if (droppedItem.pickedUp)
-            {
-                return;
-            }
-            droppedItem.pickedUp = true;
-            AddItem(droppedItem.item);
-            Destroy(other.gameObject);
-        }
+        Debug.Log("Trigger entered by: " + other.name);
     }
+   // public void OnTriggerEnter(Collider other)
+   // {
+    //    if (other.CompareTag("DroppedItem"))
+   //     {
+   //         var droppedItem = other.GetComponent<DroppedItem>();
+    //        if (droppedItem.pickedUp)
+  //          {
+   //             return;
+   //         }
+   //         droppedItem.pickedUp = true;
+  //          AddItem(droppedItem.item);
+  //          Destroy(other.gameObject);
+  //      }
+ //   }
 
     void AddItem(Item item)
     {
