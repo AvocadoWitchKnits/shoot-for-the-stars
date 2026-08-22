@@ -24,6 +24,31 @@ public class Inventory : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Trigger entered by: " + other.name);
+        Debug.Log("Tag is: " + other.tag);
+
+        if (other.CompareTag("DroppedItem"))
+        {
+            Debug.Log("DroppedItem tag recognised!");
+
+            var droppedItem = other.GetComponent<DroppedItem>();
+
+            Debug.Log("DroppedItem component: " + droppedItem);
+
+            if (droppedItem.pickedUp)
+            {
+                Debug.Log("Item was already marked as picked up.");
+                return;
+            }
+
+            Debug.Log("About to add item.");
+
+            droppedItem.pickedUp = true;
+            AddItem(droppedItem.item);
+
+            Debug.Log("Item added successfully.");
+
+            Destroy(other.gameObject);
+        }
     }
    // public void OnTriggerEnter(Collider other)
    // {

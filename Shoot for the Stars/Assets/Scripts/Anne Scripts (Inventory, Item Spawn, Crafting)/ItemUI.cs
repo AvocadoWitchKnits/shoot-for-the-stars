@@ -13,6 +13,9 @@ public class ItemUI : MonoBehaviour
 
     public void Initialize(string inventoryId, Item item, Action<string> removeItemAction)
     {
+        Debug.Log("Image reference: " + image);
+        Debug.Log("Item reference: " + item);
+
         image.sprite = item.icon;
         transform.localScale = Vector3.one;
         button.onClick.AddListener(() => removeItemAction.Invoke(inventoryId));
