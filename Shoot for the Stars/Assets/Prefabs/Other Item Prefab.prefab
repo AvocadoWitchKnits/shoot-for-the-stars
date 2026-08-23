@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4520809403497592474}
   - component: {fileID: -1317045559754722771}
   m_Layer: 0
-  m_Name: Dropped Item Prefab
+  m_Name: Other Item Prefab
   m_TagString: DroppedItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
