@@ -31,9 +31,8 @@ public class FPController : MonoBehaviour
     public Toggle ToggleMenu;
     public GameObject QuestList;
 
-    
-    
-    
+    [Header ("Key Guide")]
+    public GameObject KeyGuide;
 
     [Header("Dialogue")]
     public float interactRange = 5f;
@@ -181,6 +180,14 @@ public void onQuestTracker(InputAction.CallbackContext context)
             ToggleMenu.isOn = !ToggleMenu.isOn;
         }
     }
+    public void OnKeyGuide(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            // Implement your key guide logic here
+            ToggleKeyGuide();
+        }
+    }
 
 
     private NPC currentNPC;
@@ -253,7 +260,16 @@ public void onQuestTracker(InputAction.CallbackContext context)
 
 
     }
+ 
+ public void ToggleKeyGuide()
+    {
+       if (KeyGuide == null)
+           return;
 
+       bool isNowActive = !KeyGuide.activeSelf;
+       KeyGuide.SetActive(isNowActive);
+       Time.timeScale = isNowActive ? 0f : 1f;
+    }
     
    private void Shoot()
 {
