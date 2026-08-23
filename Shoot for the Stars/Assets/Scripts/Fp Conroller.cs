@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using Unity.VisualScripting;
 using UnityEngine.EventSystems;
-
+using System.Reflection;
 
 public class FPController : MonoBehaviour
 
@@ -24,16 +24,16 @@ public class FPController : MonoBehaviour
     [Header("Shooting")]
     public GameObject bulletPrefab;
     public Transform gunPoint;
-    public float bulletForce = 700f;
+    public float bulletForce = 10f;
 
-    [Header("Crouch Settings")]
-    public float crouchHeight = 1f;
-    public float standHeight = 2f;
-    public float crouchSpeed = 2.5f;
-    private float originalMoveSpeed;
-
+   
     [Header("Toggle Menu")]
     public Toggle ToggleMenu;
+    public GameObject QuestList;
+
+    
+    
+    
 
     [Header("Dialogue")]
     public float interactRange = 5f;
@@ -52,7 +52,7 @@ public class FPController : MonoBehaviour
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
-        originalMoveSpeed = moveSpeed;
+       
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
@@ -149,6 +149,22 @@ public class FPController : MonoBehaviour
         }
     }
 
+public void onQuestTracker(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            ToggleQuestList();
+        }
+    }
+
+    private void ToggleQuestList()
+    {
+        if (QuestList != null)
+        {
+            QuestList.SetActive(!QuestList.activeSelf);
+        }
+    }
+
     public void OnDialogue(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -158,6 +174,7 @@ public class FPController : MonoBehaviour
     }
 
     public void OnToggleMenu(InputAction.CallbackContext context)
+    
     {
         if (context.performed && ToggleMenu != null)
         {
@@ -237,19 +254,20 @@ public class FPController : MonoBehaviour
 
     }
 
-    private void Shoot()
+    
+   private void Shoot()
+{
+    if (EventSystem.current.IsPointerOverGameObject())
+        return; // don't shoot when clicking on UI
+
+    if (bulletPrefab != null && gunPoint != null)
     {
+        GameObject bullet = Instantiate(bulletPrefab, gunPoint.position, gunPoint.rotation);
+        Rigidbody rb = bullet.GetComponent<Rigidbody>();
 
-
-        if (bulletPrefab != null && gunPoint != null)
+        if (rb != null)
         {
-            GameObject bullet = Instantiate(bulletPrefab, gunPoint.position, gunPoint.rotation);
-            Rigidbody rb = bullet.GetComponent<Rigidbody>();
-
-            if (rb != null)
-            {
-                rb.AddForce(gunPoint.forward * bulletForce);
-            }
+            rb.AddForce(gunPoint.forward * bulletForce, ForceMode.Impulse);
         }
     }
-}
+    }}

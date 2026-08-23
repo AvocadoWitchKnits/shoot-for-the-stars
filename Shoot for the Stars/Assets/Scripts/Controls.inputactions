@@ -52,15 +52,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Toggle Menu",
-                    "type": "Button",
-                    "id": "36bc6a97-81b1-4452-b1f9-053888d2ef6e",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Quest Tracker",
                     "type": "Button",
                     "id": "6433456e-3815-4853-811a-0c22a970fb32",
@@ -326,19 +317,8 @@
                 },
                 {
                     "name": "",
-                    "id": "8effdc82-ffdc-4e3b-bf64-392f8f735e59",
-                    "path": "<Mouse>/middleButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard",
-                    "action": "Toggle Menu",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "38d984f3-4fcf-469c-aadc-28c923c4ad96",
-                    "path": "<Mouse>/leftButton",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard",
