@@ -154,6 +154,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Test Action"",
+                    ""type"": ""Button"",
+                    ""id"": ""a01dd98b-f651-4be7-a62c-f5a2b1a04d82"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -431,6 +440,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Quest Tracker"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d6745a19-654d-4eb2-9e6e-8a800770fef4"",
+                    ""path"": ""<Keyboard>/t"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Test Action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -474,6 +494,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Dialogue = m_Player.FindAction("Dialogue", throwIfNotFound: true);
         m_Player_ToggleMenu = m_Player.FindAction("Toggle Menu", throwIfNotFound: true);
         m_Player_QuestTracker = m_Player.FindAction("Quest Tracker", throwIfNotFound: true);
+        m_Player_TestAction = m_Player.FindAction("Test Action", throwIfNotFound: true);
     }
 
     ~@Controls()
@@ -561,6 +582,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Dialogue;
     private readonly InputAction m_Player_ToggleMenu;
     private readonly InputAction m_Player_QuestTracker;
+    private readonly InputAction m_Player_TestAction;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -600,6 +622,10 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/QuestTracker".
         /// </summary>
         public InputAction @QuestTracker => m_Wrapper.m_Player_QuestTracker;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/TestAction".
+        /// </summary>
+        public InputAction @TestAction => m_Wrapper.m_Player_TestAction;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -647,6 +673,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @QuestTracker.started += instance.OnQuestTracker;
             @QuestTracker.performed += instance.OnQuestTracker;
             @QuestTracker.canceled += instance.OnQuestTracker;
+            @TestAction.started += instance.OnTestAction;
+            @TestAction.performed += instance.OnTestAction;
+            @TestAction.canceled += instance.OnTestAction;
         }
 
         /// <summary>
@@ -679,6 +708,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @QuestTracker.started -= instance.OnQuestTracker;
             @QuestTracker.performed -= instance.OnQuestTracker;
             @QuestTracker.canceled -= instance.OnQuestTracker;
+            @TestAction.started -= instance.OnTestAction;
+            @TestAction.performed -= instance.OnTestAction;
+            @TestAction.canceled -= instance.OnTestAction;
         }
 
         /// <summary>
@@ -794,5 +826,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnQuestTracker(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Test Action" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnTestAction(InputAction.CallbackContext context);
     }
 }
