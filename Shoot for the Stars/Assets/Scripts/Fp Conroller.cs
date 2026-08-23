@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using Unity.VisualScripting;
 using UnityEngine.EventSystems;
+using System.Reflection;
 
 public class FPController : MonoBehaviour
 
@@ -23,22 +24,23 @@ public class FPController : MonoBehaviour
     [Header("Shooting")]
     public GameObject bulletPrefab;
     public Transform gunPoint;
-    public float bulletForce = 700f;
+    public float bulletForce = 10f;
 
-    [Header("Crouch Settings")]
-    public float crouchHeight = 1f;
-    public float standHeight = 2f;
-    public float crouchSpeed = 2.5f;
-    private float originalMoveSpeed;
-
+   
     [Header("Toggle Menu")]
     public Toggle ToggleMenu;
+    public GameObject QuestList;
+
+    
+    
+    
 
     [Header("Dialogue")]
     public float interactRange = 5f;
     public LayerMask npcLayer;
+    public TextMeshProUGUI dialogueText;
+    public GameObject dialoguePanel;
     public GameObject dialogueUI;
-    public TMP_Text dialogueText;
 
     private CharacterController controller;
     private Vector2 moveInput;
@@ -50,7 +52,7 @@ public class FPController : MonoBehaviour
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
-        originalMoveSpeed = moveSpeed;
+       
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
@@ -147,6 +149,22 @@ public class FPController : MonoBehaviour
         }
     }
 
+public void onQuestTracker(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            ToggleQuestList();
+        }
+    }
+
+    private void ToggleQuestList()
+    {
+        if (QuestList != null)
+        {
+            QuestList.SetActive(!QuestList.activeSelf);
+        }
+    }
+
     public void OnDialogue(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -156,13 +174,14 @@ public class FPController : MonoBehaviour
     }
 
     public void OnToggleMenu(InputAction.CallbackContext context)
+    
     {
         if (context.performed && ToggleMenu != null)
         {
             ToggleMenu.isOn = !ToggleMenu.isOn;
         }
     }
-   
+
 
     private NPC currentNPC;
     private int dialogueIndex = 0;
@@ -170,6 +189,8 @@ public class FPController : MonoBehaviour
 
     private void Dialogue()
     {
+        Debug.Log("Dialogue()called, inDialogue = " + inDialogue);
+
         if (!inDialogue)
         {
             Collider[] hits = Physics.OverlapSphere(transform.position, interactRange, npcLayer);
@@ -206,6 +227,7 @@ public class FPController : MonoBehaviour
             dialogueIndex++;
             if (dialogueIndex >= currentNPC.dialogueLines.Length)
             {
+                Debug.Log("Advancing dialogue, new index = " + dialogueIndex + "/ total lines = " + currentNPC.dialogueLines.Length);
                 inDialogue = false;
                 if (dialogueUI != null)
                 {
@@ -223,27 +245,29 @@ public class FPController : MonoBehaviour
     {
         if (currentNPC == null || dialogueText == null)
             return;
-
-        if (dialogueIndex < 0 || dialogueIndex >= currentNPC.dialogueLines.Length)
-            return;
+        if (dialogueIndex < 0 || dialogueIndex >= currentNPC.dialogueLines.Length) return;
 
         DialogueLine line = currentNPC.dialogueLines[dialogueIndex];
         dialogueText.text = $"{line.SpeakerName}: {line.text}";
+        Debug.Log($"Showline: index= " + dialogueIndex + " text= " + dialogueText.text);
+
+
     }
 
-    private void Shoot()
+    
+   private void Shoot()
+{
+    if (EventSystem.current.IsPointerOverGameObject())
+        return; // don't shoot when clicking on UI
+
+    if (bulletPrefab != null && gunPoint != null)
     {
-        
+        GameObject bullet = Instantiate(bulletPrefab, gunPoint.position, gunPoint.rotation);
+        Rigidbody rb = bullet.GetComponent<Rigidbody>();
 
-        if (bulletPrefab != null && gunPoint != null)
+        if (rb != null)
         {
-            GameObject bullet = Instantiate(bulletPrefab, gunPoint.position, gunPoint.rotation);
-            Rigidbody rb = bullet.GetComponent<Rigidbody>();
-
-            if (rb != null)
-            {
-                rb.AddForce(gunPoint.forward * bulletForce);
-            }
+            rb.AddForce(gunPoint.forward * bulletForce, ForceMode.Impulse);
         }
     }
-}
+    }}
