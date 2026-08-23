@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using Unity.VisualScripting;
 using UnityEngine.EventSystems;
 
+
 public class FPController : MonoBehaviour
 
 {
@@ -37,8 +38,9 @@ public class FPController : MonoBehaviour
     [Header("Dialogue")]
     public float interactRange = 5f;
     public LayerMask npcLayer;
+    public TextMeshProUGUI dialogueText;
+    public GameObject dialoguePanel;
     public GameObject dialogueUI;
-    public TMP_Text dialogueText;
 
     private CharacterController controller;
     private Vector2 moveInput;
@@ -154,7 +156,6 @@ public class FPController : MonoBehaviour
             Dialogue();
         }
     }
-    
 
     public void OnToggleMenu(InputAction.CallbackContext context)
     {
@@ -163,7 +164,7 @@ public class FPController : MonoBehaviour
             ToggleMenu.isOn = !ToggleMenu.isOn;
         }
     }
-   
+
 
     private NPC currentNPC;
     private int dialogueIndex = 0;
@@ -171,6 +172,8 @@ public class FPController : MonoBehaviour
 
     private void Dialogue()
     {
+        Debug.Log("Dialogue()called, inDialogue = " + inDialogue);
+
         if (!inDialogue)
         {
             Collider[] hits = Physics.OverlapSphere(transform.position, interactRange, npcLayer);
@@ -207,6 +210,7 @@ public class FPController : MonoBehaviour
             dialogueIndex++;
             if (dialogueIndex >= currentNPC.dialogueLines.Length)
             {
+                Debug.Log("Advancing dialogue, new index = " + dialogueIndex + "/ total lines = " + currentNPC.dialogueLines.Length);
                 inDialogue = false;
                 if (dialogueUI != null)
                 {
@@ -224,17 +228,18 @@ public class FPController : MonoBehaviour
     {
         if (currentNPC == null || dialogueText == null)
             return;
-
-        if (dialogueIndex < 0 || dialogueIndex >= currentNPC.dialogueLines.Length)
-            return;
+        if (dialogueIndex < 0 || dialogueIndex >= currentNPC.dialogueLines.Length) return;
 
         DialogueLine line = currentNPC.dialogueLines[dialogueIndex];
         dialogueText.text = $"{line.SpeakerName}: {line.text}";
+        Debug.Log($"Showline: index= " + dialogueIndex + " text= " + dialogueText.text);
+
+
     }
 
     private void Shoot()
     {
-        
+
 
         if (bulletPrefab != null && gunPoint != null)
         {
