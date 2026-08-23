@@ -59,6 +59,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Test Action",
+                    "type": "Button",
+                    "id": "a01dd98b-f651-4be7-a62c-f5a2b1a04d82",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -323,6 +332,17 @@
                     "processors": "",
                     "groups": ";Keyboard",
                     "action": "Quest Tracker",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d6745a19-654d-4eb2-9e6e-8a800770fef4",
+                    "path": "<Keyboard>/t",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard",
+                    "action": "Test Action",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
