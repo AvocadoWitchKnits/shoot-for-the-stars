@@ -15,16 +15,37 @@ public class InventoryUI : MonoBehaviour
     Transform uiInventoryParent;
 
     [Header("State")]
-    [Header("SerializeField")]
+    [SerializeField]
     SerializedDictionary<string, GameObject> inventoryUI = new();
 
     public void AddUIItem(string inventoryId, Item item)
     {
-        var itemUI = Instantiate(uiItemPrefab).GetComponent<ItemUI>();
-        itemUI.transform.SetParent(uiInventoryParent);
+        Debug.Log("AddUIItem started");
+
+        var itemUI = Instantiate(uiItemPrefab, uiInventoryParent).GetComponent<ItemUI>();
+
+        Debug.Log("UI prefab instantiated");
+        Debug.Log("itemUI is null: " + (itemUI == null));
+        Debug.Log("item is null before Initialize: " + (item == null));
+        Debug.Log("inventory is null: " + (inventory == null));
+        Debug.Log("uiInventoryParent is null: " + (uiInventoryParent == null));
+
         inventoryUI.Add(inventoryId, itemUI.gameObject);
+
+        Debug.Log("About to call Initialize");
+
         itemUI.Initialize(inventoryId, item, inventory.DropItem);
+
+        Debug.Log("Initialize completed");
     }
+
+    // public void AddUIItem(string inventoryId, Item item)
+    // {
+    //  var itemUI = Instantiate(uiItemPrefab, uiInventoryParent).GetComponent<ItemUI>();
+
+    //        inventoryUI.Add(inventoryId, itemUI.gameObject);
+    //        itemUI.Initialize(inventoryId, item, inventory.DropItem);
+    //   }
 
     public void RemoveUIItem(string inventoryId)
     {
