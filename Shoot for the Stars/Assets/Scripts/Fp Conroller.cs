@@ -154,6 +154,7 @@ public class FPController : MonoBehaviour
             Dialogue();
         }
     }
+    
 
     public void OnToggleMenu(InputAction.CallbackContext context)
     {
