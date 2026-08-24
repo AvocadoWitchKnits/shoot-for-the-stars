@@ -258,6 +258,7 @@ GameObject:
   - component: {fileID: 235168353}
   - component: {fileID: 235168352}
   - component: {fileID: 235168351}
+  - component: {fileID: 235168354}
   m_Layer: 5
   m_Name: Start
   m_TagString: Untagged
@@ -329,8 +330,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 967835882}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+      - m_Target: {fileID: 235168354}
+        m_TargetAssemblyTypeName: Sceneloader, Assembly-CSharp
         m_MethodName: LoadScene
         m_Mode: 5
         m_Arguments:
@@ -379,6 +380,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 235168349}
   m_CullTransparentMesh: 1
+--- !u!114 &235168354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 235168349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cbd35d169c51074b81f90d44cd468b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Sceneloader
 --- !u!1 &853958833
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,6 +483,8 @@ GameObject:
   - component: {fileID: 921233129}
   - component: {fileID: 921233128}
   - component: {fileID: 921233127}
+  - component: {fileID: 921233130}
+  - component: {fileID: 921233131}
   m_Layer: 5
   m_Name: Quit
   m_TagString: Untagged
@@ -494,7 +509,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2, y: -84}
+  m_AnchoredPosition: {x: -2, y: -83.7}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &921233127
@@ -541,7 +556,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 967835882}
+      - m_Target: {fileID: 921233131}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
@@ -591,6 +606,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 921233125}
   m_CullTransparentMesh: 1
+--- !u!114 &921233130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 921233125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cbd35d169c51074b81f90d44cd468b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Sceneloader
+--- !u!114 &921233131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 921233125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6584e345b4ecea478dfa75537161c9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MainMenu
 --- !u!1 &931851105
 GameObject:
   m_ObjectHideFlags: 0
