@@ -145,6 +145,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Key guide"",
+                    ""type"": ""Button"",
+                    ""id"": ""7e8681c9-5b2a-46b0-8a4d-aa9c8812fbf3"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -411,6 +420,39 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Quest Tracker"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6ba71d34-6420-4413-9fd8-590b06abed98"",
+                    ""path"": ""<NimbusGamepadHid>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Quest Tracker"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cda06785-1c3a-4ce4-b760-0e152600c1a2"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Key guide"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f93821ef-e165-4ca7-bb2f-dd0b25026c3b"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Key guide"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -453,6 +495,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
         m_Player_Dialogue = m_Player.FindAction("Dialogue", throwIfNotFound: true);
         m_Player_QuestTracker = m_Player.FindAction("Quest Tracker", throwIfNotFound: true);
+        m_Player_Keyguide = m_Player.FindAction("Key guide", throwIfNotFound: true);
     }
 
     ~@Controls()
@@ -539,6 +582,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Shoot;
     private readonly InputAction m_Player_Dialogue;
     private readonly InputAction m_Player_QuestTracker;
+    private readonly InputAction m_Player_Keyguide;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -574,6 +618,10 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/QuestTracker".
         /// </summary>
         public InputAction @QuestTracker => m_Wrapper.m_Player_QuestTracker;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Keyguide".
+        /// </summary>
+        public InputAction @Keyguide => m_Wrapper.m_Player_Keyguide;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -618,6 +666,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @QuestTracker.started += instance.OnQuestTracker;
             @QuestTracker.performed += instance.OnQuestTracker;
             @QuestTracker.canceled += instance.OnQuestTracker;
+            @Keyguide.started += instance.OnKeyguide;
+            @Keyguide.performed += instance.OnKeyguide;
+            @Keyguide.canceled += instance.OnKeyguide;
         }
 
         /// <summary>
@@ -647,6 +698,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @QuestTracker.started -= instance.OnQuestTracker;
             @QuestTracker.performed -= instance.OnQuestTracker;
             @QuestTracker.canceled -= instance.OnQuestTracker;
+            @Keyguide.started -= instance.OnKeyguide;
+            @Keyguide.performed -= instance.OnKeyguide;
+            @Keyguide.canceled -= instance.OnKeyguide;
         }
 
         /// <summary>
@@ -755,5 +809,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnQuestTracker(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Key guide" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnKeyguide(InputAction.CallbackContext context);
     }
 }
