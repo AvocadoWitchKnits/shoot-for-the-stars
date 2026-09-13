@@ -26,12 +26,12 @@ public class FPController : MonoBehaviour
     public Transform gunPoint;
     public float bulletForce = 10f;
 
-   
+
     [Header("Toggle Menu")]
     public Toggle ToggleMenu;
     public GameObject QuestList;
 
-    [Header ("Key Guide")]
+    [Header("Key Guide")]
     public GameObject KeyGuide;
 
     [Header("Dialogue")]
@@ -51,7 +51,7 @@ public class FPController : MonoBehaviour
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
-       
+
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
@@ -71,6 +71,7 @@ public class FPController : MonoBehaviour
     // This method is called by the Input System when look input changes.
     public void OnLook(InputAction.CallbackContext context)
     {
+        
         // Reads the look input as a Vector2.
         // For example, mouse movement or the right analogue stick.
         lookInput = context.ReadValue<Vector2>();
@@ -79,6 +80,10 @@ public class FPController : MonoBehaviour
     // Handles the player's movement and gravity.
     public void HandleMovement()
     {
+              
+    if (EventSystem.current.IsPointerOverGameObject())
+        return; // don't shoot when clicking on UI
+
         // Creates the horizontal movement direction.
         Vector3 move =
             transform.right * moveInput.x +
@@ -103,7 +108,13 @@ public class FPController : MonoBehaviour
 
     // Handles the player's camera and body rotation.
     public void HandleLook()
+
+
     {
+
+        if (EventSystem.current.IsPointerOverGameObject())
+            return; // don't shoot when clicking on UI
+
         // Calculates horizontal camera movement using the look input
         // and the selected sensitivity.
         float mouseX = lookInput.x * lookSensitivity;
@@ -148,7 +159,7 @@ public class FPController : MonoBehaviour
         }
     }
 
-public void onQuestTracker(InputAction.CallbackContext context)
+    public void onQuestTracker(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
@@ -173,7 +184,7 @@ public void onQuestTracker(InputAction.CallbackContext context)
     }
 
     public void OnToggleMenu(InputAction.CallbackContext context)
-    
+
     {
         if (context.performed && ToggleMenu != null)
         {
@@ -260,30 +271,31 @@ public void onQuestTracker(InputAction.CallbackContext context)
 
 
     }
- 
- public void ToggleKeyGuide()
-    {
-       if (KeyGuide == null)
-           return;
 
-       bool isNowActive = !KeyGuide.activeSelf;
-       KeyGuide.SetActive(isNowActive);
-       Time.timeScale = isNowActive ? 0f : 1f;
+    public void ToggleKeyGuide()
+    {
+        if (KeyGuide == null)
+            return;
+
+        bool isNowActive = !KeyGuide.activeSelf;
+        KeyGuide.SetActive(isNowActive);
+        Time.timeScale = isNowActive ? 0f : 1f;
     }
-    
-   private void Shoot()
-{
-    if (EventSystem.current.IsPointerOverGameObject())
-        return; // don't shoot when clicking on UI
 
-    if (bulletPrefab != null && gunPoint != null)
+    private void Shoot()
     {
-        GameObject bullet = Instantiate(bulletPrefab, gunPoint.position, gunPoint.rotation);
-        Rigidbody rb = bullet.GetComponent<Rigidbody>();
+        if (EventSystem.current.IsPointerOverGameObject())
+            return; // don't shoot when clicking on UI
 
-        if (rb != null)
+        if (bulletPrefab != null && gunPoint != null)
         {
-            rb.AddForce(gunPoint.forward * bulletForce, ForceMode.Impulse);
+            GameObject bullet = Instantiate(bulletPrefab, gunPoint.position, gunPoint.rotation);
+            Rigidbody rb = bullet.GetComponent<Rigidbody>();
+
+            if (rb != null)
+            {
+                rb.AddForce(gunPoint.forward * bulletForce, ForceMode.Impulse);
+            }
         }
     }
-    }}
+}
