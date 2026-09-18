@@ -13,6 +13,7 @@ public class FPController : MonoBehaviour
 {
     [Header("Movement Settings")]
     public float moveSpeed = 5f;
+    public float sprintSpeed = 9f;
     public float gravity = -9.81f;     // Controls the downward force applied to the player. The value is negative because gravity pulls the player down.
     public float jumpHeight = 1.5f;
 
@@ -66,6 +67,17 @@ public class FPController : MonoBehaviour
         // Reads the movement input as a Vector2.
         // For example, WASD or the left analogue stick.
         moveInput = context.ReadValue<Vector2>();
+    }
+    public void OnSprint(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            moveSpeed = sprintSpeed; // Set the movement speed to sprint speed when the sprint action is performed.
+        }
+        else if (context.canceled)
+        {
+            moveSpeed = 5f; // Reset the movement speed to normal when the sprint action is canceled.
+        }
     }
 
     // This method is called by the Input System when look input changes.
