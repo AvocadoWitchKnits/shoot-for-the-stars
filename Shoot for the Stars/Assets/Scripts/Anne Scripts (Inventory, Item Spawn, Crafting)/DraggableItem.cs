@@ -13,6 +13,20 @@ public class DraggableItem : MonoBehaviour
     private Vector2 _offset;
     private bool _isDragging;
 
+    private void OnEnable()
+    {
+        clickAction.action.started += OnClickStarted;
+        clickAction.action.canceled += OnClickCanceled;
+        pointerPosAction.action.performed += OnPointMoved;
+    }
+
+    private void OnDisable()
+    {
+        clickAction.action.started -= OnClickStarted;
+        clickAction.action.canceled -= OnClickCanceled;
+        pointerPosAction.action.performed -= OnPointMoved;
+        _isDragging = false; 
+    }
     private bool IsPointerOverItem(Vector2 pointerPos)
     {
         return RectTransformUtility.RectangleContainsScreenPoint(itemTransform, pointerPos, uiCamera);
@@ -24,7 +38,7 @@ public class DraggableItem : MonoBehaviour
         {
             _isDragging = true;
             RectTransformUtility.ScreenPointToLocalPointInRectangle(
-                canvasTransform, screenPoint:pointerPos, uiCamera, localPoint:out var localPos:Vector2
+                canvasTransform, pointerPos, uiCamera, out var localPos
                 );
 
             _offset = panelTransform.anchoredPosition - localPos;
@@ -42,7 +56,7 @@ public class DraggableItem : MonoBehaviour
         if (!_isDragging) return;
         var pointerPos = ctx.ReadValue<Vector2>();
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
-            canvasTransform, screenPoint: pointerPos, uiCamera, localPoint: out var localPos:Vector2);
+            canvasTransform, pointerPos, uiCamera, out var localPos);
         panelTransform.anchoredPosition = localPos + _offset;
     }
 }
