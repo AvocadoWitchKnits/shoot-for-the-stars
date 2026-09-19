@@ -42,6 +42,12 @@ public class FPController : MonoBehaviour
     public GameObject dialoguePanel;
     public GameObject dialogueUI;
 
+    [Header("InteractionUI")]
+    public GameObject interactionPromptUI;
+    private Text promptText;
+    private float displayDuration = 3f;
+
+
     private CharacterController controller;
     private Vector2 moveInput;
     private Vector2 lookInput;
@@ -64,8 +70,7 @@ public class FPController : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        // Reads the movement input as a Vector2.
-        // For example, WASD or the left analogue stick.
+
         moveInput = context.ReadValue<Vector2>();
     }
     public void OnSprint(InputAction.CallbackContext context)
@@ -83,7 +88,7 @@ public class FPController : MonoBehaviour
     // This method is called by the Input System when look input changes.
     public void OnLook(InputAction.CallbackContext context)
     {
-        
+
         // Reads the look input as a Vector2.
         // For example, mouse movement or the right analogue stick.
         lookInput = context.ReadValue<Vector2>();
@@ -92,9 +97,9 @@ public class FPController : MonoBehaviour
     // Handles the player's movement and gravity.
     public void HandleMovement()
     {
-              
-    if (EventSystem.current.IsPointerOverGameObject())
-        return; // don't shoot when clicking on UI
+
+        if (EventSystem.current.IsPointerOverGameObject())
+            return; // don't shoot when clicking on UI
 
         // Creates the horizontal movement direction.
         Vector3 move =
@@ -211,6 +216,11 @@ public class FPController : MonoBehaviour
             ToggleKeyGuide();
         }
     }
+    public void OnInteraction(InputAction.CallbackContext context)
+    {
+       Debug.Log ("W pressed!");
+   TutorialHintUI.Instance.ShowTimed("Press E to interact");
+    }
 
 
     private NPC currentNPC;
@@ -271,6 +281,7 @@ public class FPController : MonoBehaviour
         }
     }
 
+
     private void ShowLine()
     {
         if (currentNPC == null || dialogueText == null)
@@ -294,6 +305,7 @@ public class FPController : MonoBehaviour
         Time.timeScale = isNowActive ? 0f : 1f;
     }
 
+
     private void Shoot()
     {
         if (EventSystem.current.IsPointerOverGameObject())
@@ -311,3 +323,4 @@ public class FPController : MonoBehaviour
         }
     }
 }
+   
