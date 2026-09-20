@@ -50,6 +50,9 @@ public class FPController : MonoBehaviour
     private Text promptText;
     private float displayDuration = 3f;
 
+[Header ("Item Suction")]
+public float suckSpeed = 5f;
+public float shootRange = 20f;
 
     private CharacterController controller;
     private Vector2 moveInput;
@@ -332,7 +335,17 @@ public class FPController : MonoBehaviour
     {
         if (EventSystem.current.IsPointerOverGameObject())
             return; // don't shoot when clicking on UI
-
+ 
+ Ray ray = new Ray (gunPoint.position, gunPoint.forward);
+if (Physics.Raycast(ray, out RaycastHit hit, shootRange))
+        {
+            QuestPickupItem item = hit.collider.GetComponent<QuestPickupItem>();
+            if (item != null)
+            {
+                item.SuckIn(gunPoint, suckSpeed);
+                return;
+            }
+        }
         if (bulletPrefab != null && gunPoint != null)
         {
             GameObject bullet = Instantiate(bulletPrefab, gunPoint.position, gunPoint.rotation);
