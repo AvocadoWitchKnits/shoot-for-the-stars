@@ -1,15 +1,28 @@
-using TMPro;   // add this line at the top
+using TMPro;
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class TutorialHintUI : MonoBehaviour
 {
     public static TutorialHintUI Instance;
 
+    [Header("UI References")]
     public GameObject hintPanel;
-    public TMP_Text hintText;     
-   
+    public TMP_Text hintText;
+
+    [Header("Settings")]
     public float displayDuration = 4f;
+
+    [System.Serializable]
+    public class HintEntry
+    {
+        public string message;
+        public float delayBeforeShowing = 3f; // gap after the previous hint hides
+    }
+
+    [Header("Tutorial Sequence")]
+    public List<HintEntry> hintSequence = new List<HintEntry>();
 
     private Coroutine hideRoutine;
 
@@ -21,7 +34,31 @@ public class TutorialHintUI : MonoBehaviour
         hintPanel.SetActive(false);
     }
 
-    public void ShowTimed(string message)
+    private void Start()
+    {
+        StartCoroutine(PlayHintSequence());
+    }
+
+    private IEnumerator PlayHintSequence()
+    {
+        foreach (HintEntry hint in hintSequence)
+        {
+            yield return new WaitForSeconds(hint.delayBeforeShowing);
+            yield return ShowTimedAndWait(hint.message);
+        }
+    }
+
+    private IEnumerator ShowTimedAndWait(string message)
+    {
+        hintText.text = message;
+        hintPanel.SetActive(true);
+
+        yield return new WaitForSeconds(displayDuration);
+
+        hintPanel.SetActive(false);
+    }
+
+        public void ShowTimed(string message)
     {
         hintText.text = message;
         hintPanel.SetActive(true);
