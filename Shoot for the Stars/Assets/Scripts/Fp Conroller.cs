@@ -35,6 +35,9 @@ public class FPController : MonoBehaviour
     [Header("Key Guide")]
     public GameObject KeyGuide;
 
+    [Header("Audio Guide")]
+    public GameObject AudioGuide;
+
     [Header("Dialogue")]
     public float interactRange = 5f;
     public LayerMask npcLayer;
@@ -216,6 +219,15 @@ public class FPController : MonoBehaviour
             ToggleKeyGuide();
         }
     }
+    
+    public void OnAudioGuide(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            // Implement your audio guide logic here
+            ToggleAudioGuide();
+        }
+    }
     public void OnInteraction(InputAction.CallbackContext context)
     {
        Debug.Log ("W pressed!");
@@ -302,6 +314,16 @@ public class FPController : MonoBehaviour
 
         bool isNowActive = !KeyGuide.activeSelf;
         KeyGuide.SetActive(isNowActive);
+        Time.timeScale = isNowActive ? 0f : 1f;
+    }
+
+    public void ToggleAudioGuide()
+    {
+        if (AudioGuide == null)
+            return;
+
+        bool isNowActive = !AudioGuide.activeSelf;
+        AudioGuide.SetActive(isNowActive);
         Time.timeScale = isNowActive ? 0f : 1f;
     }
 
