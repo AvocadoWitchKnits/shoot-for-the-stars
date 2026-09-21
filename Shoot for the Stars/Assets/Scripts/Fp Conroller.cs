@@ -233,18 +233,37 @@ public class FPController : MonoBehaviour
     }
 
     private void Shoot()
+{
+    if (EventSystem.current.IsPointerOverGameObject())
+        return;
+
+    Ray ray = new Ray(gunPoint.position, gunPoint.forward);
+    if (Physics.Raycast(ray, out RaycastHit hit, shootRange))
     {
-        
-
-        if (bulletPrefab != null && gunPoint != null)
+        QuestPickupItem item = hit.collider.GetComponent<QuestPickupItem>();
+        if (item != null)
         {
-            GameObject bullet = Instantiate(bulletPrefab, gunPoint.position, gunPoint.rotation);
-            Rigidbody rb = bullet.GetComponent<Rigidbody>();
+            item.SuckIn(gunPoint, suckSpeed);
 
-            if (rb != null)
+            if (suctionParticles != null)
             {
-                rb.AddForce(gunPoint.forward * bulletForce);
+                Debug.Log("Playing suction particles");
+                suctionParticles.Play();
             }
+            else
+            {
+                Debug.Log("suctionParticles is NULL");
+            }
+
+            return;
         }
     }
-}
+
+    if (bulletPrefab != null && gunPoint != null)
+    {
+        GameObject bullet = Instantiate(bulletPrefab, gunPoint.position, gunPoint.rotation);
+        Rigidbody rb = bullet.GetComponent<Rigidbody>();
+        if (rb != null)
+            rb.AddForce(gunPoint.forward * bulletForce, ForceMode.Impulse);
+    }
+}}
