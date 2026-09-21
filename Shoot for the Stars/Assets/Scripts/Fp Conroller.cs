@@ -6,14 +6,12 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using Unity.VisualScripting;
 using UnityEngine.EventSystems;
-using System.Reflection;
 
 public class FPController : MonoBehaviour
 
 {
     [Header("Movement Settings")]
     public float moveSpeed = 5f;
-    public float sprintSpeed = 9f;
     public float gravity = -9.81f;     // Controls the downward force applied to the player. The value is negative because gravity pulls the player down.
     public float jumpHeight = 1.5f;
 
@@ -25,34 +23,22 @@ public class FPController : MonoBehaviour
     [Header("Shooting")]
     public GameObject bulletPrefab;
     public Transform gunPoint;
-    public float bulletForce = 10f;
+    public float bulletForce = 700f;
 
+    [Header("Crouch Settings")]
+    public float crouchHeight = 1f;
+    public float standHeight = 2f;
+    public float crouchSpeed = 2.5f;
+    private float originalMoveSpeed;
 
     [Header("Toggle Menu")]
     public Toggle ToggleMenu;
-    public GameObject QuestList;
-
-    [Header("Key Guide")]
-    public GameObject KeyGuide;
-
-    [Header("Audio Guide")]
-    public GameObject AudioGuide;
 
     [Header("Dialogue")]
     public float interactRange = 5f;
     public LayerMask npcLayer;
-    public TextMeshProUGUI dialogueText;
-    public GameObject dialoguePanel;
     public GameObject dialogueUI;
-
-    [Header("InteractionUI")]
-    public GameObject interactionPromptUI;
-    private Text promptText;
-    private float displayDuration = 3f;
-
-[Header ("Item Suction")]
-public float suckSpeed = 5f;
-public float shootRange = 20f;
+    public TMP_Text dialogueText;
 
     private CharacterController controller;
     private Vector2 moveInput;
@@ -64,7 +50,7 @@ public float shootRange = 20f;
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
-
+        originalMoveSpeed = moveSpeed;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
@@ -76,25 +62,14 @@ public float shootRange = 20f;
 
     public void OnMove(InputAction.CallbackContext context)
     {
-
+        // Reads the movement input as a Vector2.
+        // For example, WASD or the left analogue stick.
         moveInput = context.ReadValue<Vector2>();
-    }
-    public void OnSprint(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            moveSpeed = sprintSpeed; // Set the movement speed to sprint speed when the sprint action is performed.
-        }
-        else if (context.canceled)
-        {
-            moveSpeed = 5f; // Reset the movement speed to normal when the sprint action is canceled.
-        }
     }
 
     // This method is called by the Input System when look input changes.
     public void OnLook(InputAction.CallbackContext context)
     {
-
         // Reads the look input as a Vector2.
         // For example, mouse movement or the right analogue stick.
         lookInput = context.ReadValue<Vector2>();
@@ -103,10 +78,6 @@ public float shootRange = 20f;
     // Handles the player's movement and gravity.
     public void HandleMovement()
     {
-
-        if (EventSystem.current.IsPointerOverGameObject())
-            return; // don't shoot when clicking on UI
-
         // Creates the horizontal movement direction.
         Vector3 move =
             transform.right * moveInput.x +
@@ -131,13 +102,7 @@ public float shootRange = 20f;
 
     // Handles the player's camera and body rotation.
     public void HandleLook()
-
-
     {
-
-        if (EventSystem.current.IsPointerOverGameObject())
-            return; // don't shoot when clicking on UI
-
         // Calculates horizontal camera movement using the look input
         // and the selected sensitivity.
         float mouseX = lookInput.x * lookSensitivity;
@@ -182,22 +147,6 @@ public float shootRange = 20f;
         }
     }
 
-    public void onQuestTracker(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            ToggleQuestList();
-        }
-    }
-
-    private void ToggleQuestList()
-    {
-        if (QuestList != null)
-        {
-            QuestList.SetActive(!QuestList.activeSelf);
-        }
-    }
-
     public void OnDialogue(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -205,38 +154,16 @@ public float shootRange = 20f;
             Dialogue();
         }
     }
+    
 
     public void OnToggleMenu(InputAction.CallbackContext context)
-
     {
         if (context.performed && ToggleMenu != null)
         {
             ToggleMenu.isOn = !ToggleMenu.isOn;
         }
     }
-    public void OnKeyGuide(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            // Implement your key guide logic here
-            ToggleKeyGuide();
-        }
-    }
-    
-    public void OnAudioGuide(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            // Implement your audio guide logic here
-            ToggleAudioGuide();
-        }
-    }
-    public void OnInteraction(InputAction.CallbackContext context)
-    {
-       Debug.Log ("W pressed!");
-   TutorialHintUI.Instance.ShowTimed("Press E to interact");
-    }
-
+   
 
     private NPC currentNPC;
     private int dialogueIndex = 0;
@@ -244,8 +171,6 @@ public float shootRange = 20f;
 
     private void Dialogue()
     {
-        Debug.Log("Dialogue()called, inDialogue = " + inDialogue);
-
         if (!inDialogue)
         {
             Collider[] hits = Physics.OverlapSphere(transform.position, interactRange, npcLayer);
@@ -282,7 +207,6 @@ public float shootRange = 20f;
             dialogueIndex++;
             if (dialogueIndex >= currentNPC.dialogueLines.Length)
             {
-                Debug.Log("Advancing dialogue, new index = " + dialogueIndex + "/ total lines = " + currentNPC.dialogueLines.Length);
                 inDialogue = false;
                 if (dialogueUI != null)
                 {
@@ -296,56 +220,22 @@ public float shootRange = 20f;
         }
     }
 
-
     private void ShowLine()
     {
         if (currentNPC == null || dialogueText == null)
             return;
-        if (dialogueIndex < 0 || dialogueIndex >= currentNPC.dialogueLines.Length) return;
+
+        if (dialogueIndex < 0 || dialogueIndex >= currentNPC.dialogueLines.Length)
+            return;
 
         DialogueLine line = currentNPC.dialogueLines[dialogueIndex];
         dialogueText.text = $"{line.SpeakerName}: {line.text}";
-        Debug.Log($"Showline: index= " + dialogueIndex + " text= " + dialogueText.text);
-
-
     }
-
-    public void ToggleKeyGuide()
-    {
-        if (KeyGuide == null)
-            return;
-
-        bool isNowActive = !KeyGuide.activeSelf;
-        KeyGuide.SetActive(isNowActive);
-        Time.timeScale = isNowActive ? 0f : 1f;
-    }
-
-    public void ToggleAudioGuide()
-    {
-        if (AudioGuide == null)
-            return;
-
-        bool isNowActive = !AudioGuide.activeSelf;
-        AudioGuide.SetActive(isNowActive);
-        Time.timeScale = isNowActive ? 0f : 1f;
-    }
-
 
     private void Shoot()
     {
-        if (EventSystem.current.IsPointerOverGameObject())
-            return; // don't shoot when clicking on UI
- 
- Ray ray = new Ray (gunPoint.position, gunPoint.forward);
-if (Physics.Raycast(ray, out RaycastHit hit, shootRange))
-        {
-            QuestPickupItem item = hit.collider.GetComponent<QuestPickupItem>();
-            if (item != null)
-            {
-                item.SuckIn(gunPoint, suckSpeed);
-                return;
-            }
-        }
+        
+
         if (bulletPrefab != null && gunPoint != null)
         {
             GameObject bullet = Instantiate(bulletPrefab, gunPoint.position, gunPoint.rotation);
@@ -353,9 +243,8 @@ if (Physics.Raycast(ray, out RaycastHit hit, shootRange))
 
             if (rb != null)
             {
-                rb.AddForce(gunPoint.forward * bulletForce, ForceMode.Impulse);
+                rb.AddForce(gunPoint.forward * bulletForce);
             }
         }
     }
 }
-   
