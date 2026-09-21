@@ -43,6 +43,15 @@ public class FPController : MonoBehaviour
     public GameObject dialogueUI;
     public TMP_Text dialogueText;
 
+    [Header("InteractionUI")]
+    public GameObject interactionPromptUI;
+    private Text promptText;
+    private float displayDuration = 3f;
+
+    [Header("Item Suction")]
+    public float suckSpeed = 5f;
+    public float shootRange = 20f;
+
     private CharacterController controller;
     private Vector2 moveInput;
     private Vector2 lookInput;
