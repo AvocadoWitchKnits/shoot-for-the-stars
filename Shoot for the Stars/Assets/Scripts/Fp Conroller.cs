@@ -27,6 +27,8 @@ public class FPController : MonoBehaviour
     public Transform gunPoint;
     public float bulletForce = 10f;
 
+[Header ("Suction Effect")]
+public ParticleSystem suctionParticles;
 
     [Header("Toggle Menu")]
     public Toggle ToggleMenu;
@@ -332,30 +334,37 @@ public float shootRange = 20f;
 
 
     private void Shoot()
-    {
-        if (EventSystem.current.IsPointerOverGameObject())
-            return; // don't shoot when clicking on UI
- 
- Ray ray = new Ray (gunPoint.position, gunPoint.forward);
-if (Physics.Raycast(ray, out RaycastHit hit, shootRange))
-        {
-            QuestPickupItem item = hit.collider.GetComponent<QuestPickupItem>();
-            if (item != null)
-            {
-                item.SuckIn(gunPoint, suckSpeed);
-                return;
-            }
-        }
-        if (bulletPrefab != null && gunPoint != null)
-        {
-            GameObject bullet = Instantiate(bulletPrefab, gunPoint.position, gunPoint.rotation);
-            Rigidbody rb = bullet.GetComponent<Rigidbody>();
+{
+    if (EventSystem.current.IsPointerOverGameObject())
+        return;
 
-            if (rb != null)
+    Ray ray = new Ray(gunPoint.position, gunPoint.forward);
+    if (Physics.Raycast(ray, out RaycastHit hit, shootRange))
+    {
+        QuestPickupItem item = hit.collider.GetComponent<QuestPickupItem>();
+        if (item != null)
+        {
+            item.SuckIn(gunPoint, suckSpeed);
+
+            if (suctionParticles != null)
             {
-                rb.AddForce(gunPoint.forward * bulletForce, ForceMode.Impulse);
+                Debug.Log("Playing suction particles");
+                suctionParticles.Play();
             }
+            else
+            {
+                Debug.Log("suctionParticles is NULL");
+            }
+
+            return;
         }
     }
-}
-   
+
+    if (bulletPrefab != null && gunPoint != null)
+    {
+        GameObject bullet = Instantiate(bulletPrefab, gunPoint.position, gunPoint.rotation);
+        Rigidbody rb = bullet.GetComponent<Rigidbody>();
+        if (rb != null)
+            rb.AddForce(gunPoint.forward * bulletForce, ForceMode.Impulse);
+    }
+}}

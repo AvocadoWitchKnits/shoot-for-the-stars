@@ -2,12 +2,13 @@ using UnityEngine;
 
 public class MainMenuButton : MonoBehaviour
 {
- public class Sceneloader : MonoBehaviour
-{
-  public void LoadScene(string sceneName)
+  public class Sceneloader : MonoBehaviour
   {
-    UnityEngine.SceneManagement.SceneManager.LoadScene("Main Menu");
+    public void LoadScene(string sceneName)
+    {
+      Time.timeScale = 1f;
+      UnityEngine.SceneManagement.SceneManager.LoadScene("Main Menu");
+    }
   }
-}
 
 }
