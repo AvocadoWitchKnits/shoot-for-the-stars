@@ -25,6 +25,9 @@ public class FPController : MonoBehaviour
     public Transform gunPoint;
     public float bulletForce = 700f;
 
+    [Header("Suction Effect")]
+    public ParticleSystem suctionParticles;
+
     [Header("Crouch Settings")]
     public float crouchHeight = 1f;
     public float standHeight = 2f;
