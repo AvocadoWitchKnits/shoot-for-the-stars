@@ -43,5 +43,7 @@ public class Inventory : MonoBehaviour
         var InventoryId = Guid.NewGuid().ToString();
         inventory.Add(InventoryId, item);
         ui.AddUIItem(InventoryId, item);
+
+        ;
     }
 }
