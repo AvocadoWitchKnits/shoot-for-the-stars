@@ -8,7 +8,7 @@ public class ItemUI : MonoBehaviour
 
     public void Initialize(Item item)
     {
-        image.sprite = item.icon;
+        image.sprite = item.image;
         transform.localScale = Vector3.one;
     }
 

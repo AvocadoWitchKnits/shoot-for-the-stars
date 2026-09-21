@@ -1,26 +1,25 @@
 using UnityEngine;
-using UnityEngine.UI;
-
+using UnityEngine.InputSystem;
 
 [CreateAssetMenu(menuName = "Scriptable object/Item")]
 public class Item : ScriptableObject
-
 {
-    public Item item;
-    public Image image;
-    private void Start()
-    {
-        InitialiseItem(item);
-    }
-    public void InitialiseItem(Item newItem)
-    {
-        image.sprite = newItem.image;
-    }
-    public string id;
-    public string description;
-    public Sprite icon;
+    public Sprite image;
     public GameObject prefab;
+    public ItemType type;
+    public ActionType actionType;
+    public Vector2Int range = new Vector2Int(5, 4);
     public bool stackable = true;
 
 
+    public enum ItemType
+    {
+        CraftingItem
+    }
+    
+    public enum ActionType
+    {
+        Collecting,
+        Crafting
+    }
 }
