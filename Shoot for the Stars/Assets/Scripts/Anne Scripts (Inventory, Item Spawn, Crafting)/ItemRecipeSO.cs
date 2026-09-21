@@ -1,0 +1,27 @@
+using System.Collections.Generic;
+using UnityEngine;
+using System.Collections;
+
+[CreateAssetMenu(fileName = "Item Recipe", menuName = "Scriptable Objects/ Item Recipe")]
+
+public class ItemRecipeSO : ScriptableObject
+{
+    public string recipeName;
+
+    public ItemTypeAndCount[] input;
+    public ItemTypeAndCount[] output;
+}
+
+[System.Serializable]
+
+public class ItemTypeAndCount
+{
+    public Item item;
+    public int count;
+
+    public ItemTypeAndCount(Item i, int c)
+    {
+        item = i;
+        count = c;
+    }
+}

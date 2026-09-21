@@ -1,49 +1,33 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
-
 
 [RequireComponent(typeof(Collider))]
 public class Inventory : MonoBehaviour
 {
-
-
-    [Header("References")]
-    [SerializeField]
-    InventoryUI ui;
-
-    [Header("Prefabs")]
-
-    [Header("State")]
-    [SerializeField]
-    SerializedDictionary<string, Item> inventory = new();
-
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("DroppedItem"))
+        if (!other.CompareTag("DroppedItem"))
+            return;
+
+        DroppedItem droppedItem = other.GetComponent<DroppedItem>();
+
+        if (droppedItem == null)
+            return;
+
+        if (droppedItem.pickedUp)
+            return;
+
+        if (droppedItem.item == null)
         {
-            var droppedItem = other.GetComponent<DroppedItem>();
+            Debug.LogWarning("DroppedItem has no Item assigned.");
+            return;
+        }
 
-            if (droppedItem.pickedUp)
-            {
-                return;
-            }
+        bool added = InventoryManager.Instance.AddItem(droppedItem.item);
 
+        if (added)
+        {
             droppedItem.pickedUp = true;
-            AddItem(droppedItem.item);
-
             Destroy(other.gameObject);
         }
-    }
-
-
-    void AddItem(Item item)
-    {
-        var InventoryId = Guid.NewGuid().ToString();
-        inventory.Add(InventoryId, item);
-        ui.AddUIItem(InventoryId, item);
-
-        ;
     }
 }
