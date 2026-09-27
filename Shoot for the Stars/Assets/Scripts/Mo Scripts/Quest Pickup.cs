@@ -2,7 +2,8 @@ using UnityEngine;
 using System.Collections;
 public class QuestPickupItem : MonoBehaviour
 {
-    public string itemName; // "Cherries", "Water", "Lavender Flower"
+    public string itemName;
+    
 
     private bool isBeingCollected = false;
 public void SuckIn(Transform target, float speed)
@@ -14,6 +15,8 @@ public void SuckIn(Transform target, float speed)
 
     Collider col = GetComponent<Collider>();
     if (col != null) col.enabled = false;
+
+    
 
     StartCoroutine(SuckInRoutine(target, speed));
 }

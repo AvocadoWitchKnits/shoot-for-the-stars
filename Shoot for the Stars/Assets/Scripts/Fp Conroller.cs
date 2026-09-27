@@ -6,14 +6,14 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using Unity.VisualScripting;
 using UnityEngine.EventSystems;
-using System.Reflection;
+using System.Reflection; 
 
 public class FPController : MonoBehaviour
 
 {
     [Header("Movement Settings")]
     public float moveSpeed = 5f;
-    public float sprintSpeed = 9f;
+    public float sprintSpeed = 9f; 
     public float gravity = -9.81f;     // Controls the downward force applied to the player. The value is negative because gravity pulls the player down.
     public float jumpHeight = 1.5f;
 
@@ -27,6 +27,8 @@ public class FPController : MonoBehaviour
     public Transform gunPoint;
     public float bulletForce = 10f;
 
+    [Header("Suction Effect")]
+    public ParticleSystem suctionParticles;
 
     [Header("Toggle Menu")]
     public Toggle ToggleMenu;
@@ -50,9 +52,9 @@ public class FPController : MonoBehaviour
     private Text promptText;
     private float displayDuration = 3f;
 
-[Header ("Item Suction")]
-public float suckSpeed = 5f;
-public float shootRange = 20f;
+    [Header("Item Suction")]
+    public float suckSpeed = 5f;
+    public float shootRange = 20f;
 
     private CharacterController controller;
     private Vector2 moveInput;
@@ -222,7 +224,7 @@ public float shootRange = 20f;
             ToggleKeyGuide();
         }
     }
-    
+
     public void OnAudioGuide(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -233,8 +235,8 @@ public float shootRange = 20f;
     }
     public void OnInteraction(InputAction.CallbackContext context)
     {
-       Debug.Log ("W pressed!");
-   TutorialHintUI.Instance.ShowTimed("Press E to interact");
+        Debug.Log("W pressed!");
+        TutorialHintUI.Instance.ShowTimed("Press E to interact");
     }
 
 
@@ -334,28 +336,36 @@ public float shootRange = 20f;
     private void Shoot()
     {
         if (EventSystem.current.IsPointerOverGameObject())
-            return; // don't shoot when clicking on UI
- 
- Ray ray = new Ray (gunPoint.position, gunPoint.forward);
-if (Physics.Raycast(ray, out RaycastHit hit, shootRange))
+            return;
+
+        Ray ray = new Ray(gunPoint.position, gunPoint.forward);
+        if (Physics.Raycast(ray, out RaycastHit hit, shootRange))
         {
             QuestPickupItem item = hit.collider.GetComponent<QuestPickupItem>();
             if (item != null)
             {
                 item.SuckIn(gunPoint, suckSpeed);
+
+                if (suctionParticles != null)
+                {
+                    Debug.Log("Playing suction particles");
+                    suctionParticles.Play();
+                }
+                else
+                {
+                    Debug.Log("suctionParticles is NULL");
+                }
+
                 return;
             }
         }
+
         if (bulletPrefab != null && gunPoint != null)
         {
             GameObject bullet = Instantiate(bulletPrefab, gunPoint.position, gunPoint.rotation);
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
-
             if (rb != null)
-            {
                 rb.AddForce(gunPoint.forward * bulletForce, ForceMode.Impulse);
-            }
         }
     }
 }
-   

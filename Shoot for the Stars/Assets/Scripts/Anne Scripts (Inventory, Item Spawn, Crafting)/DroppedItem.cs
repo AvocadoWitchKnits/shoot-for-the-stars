@@ -22,6 +22,25 @@ public class DroppedItem : MonoBehaviour
             Initialize(item);
         }
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!other.CompareTag("Player"))
+            return;
+
+        if (pickedUp)
+            return;
+
+        if (item == null)
+            return;
+
+        bool added = InventoryManager.Instance.AddItem(item);
+
+        if (added)
+        {
+            pickedUp = true;
+            Destroy(gameObject);
+        }
+    }
 
     public void Initialize(Item item)
     {

@@ -20,7 +20,7 @@ public class TimeTickSystem : MonoBehaviour
         {
             tickTimer -= TICK_TIMER_MAX;
             tick++;
-            Debug.Log("Tick " + tick);
+            //Debug.Log("Tick " + tick);
         }
     }
 } 
