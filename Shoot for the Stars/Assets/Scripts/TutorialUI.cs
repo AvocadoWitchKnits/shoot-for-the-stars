@@ -14,57 +14,55 @@ public class TutorialHintUI : MonoBehaviour
     [Header("Settings")]
     public float displayDuration = 4f;
 
-    [System.Serializable]
-    public class HintEntry
-    {
-        public string message;
-        public float delayBeforeShowing = 3f; // gap after the previous hint hides
-    }
-
-    [Header("Tutorial Sequence")]
-    public List<HintEntry> hintSequence = new List<HintEntry>();
-
+    private readonly HashSet<string> seen = new HashSet<string>();
+    private readonly List<(string id, string message)> active = new List<(string, string)>();
     private Coroutine hideRoutine;
 
     private void Awake()
     {
         if (Instance == null) Instance = this;
-        else Destroy(gameObject);
+        else { Destroy(gameObject); return; }
 
         hintPanel.SetActive(false);
     }
 
-    private void Start()
+    public bool HasSeen(string id) => seen.Contains(id);
+
+
+    public void Show(string id, string message)
     {
-        StartCoroutine(PlayHintSequence());
+        active.RemoveAll(a => a.id == id);
+        active.Add((id, message));
+        Display(message);
     }
 
-    private IEnumerator PlayHintSequence()
+
+    public void Hide(string id)
     {
-        foreach (HintEntry hint in hintSequence)
-        {
-            yield return new WaitForSeconds(hint.delayBeforeShowing);
-            yield return ShowTimedAndWait(hint.message);
-        }
+        if (!active.Exists(a => a.id == id)) return;
+
+        active.RemoveAll(a => a.id == id);
+        seen.Add(id);
+
+
+        if (active.Count > 0) Display(active[active.Count - 1].message);
+        else hintPanel.SetActive(false);
     }
 
-    private IEnumerator ShowTimedAndWait(string message)
+
+    public void ShowTimed(string message)
     {
-        hintText.text = message;
-        hintPanel.SetActive(true);
-
-        yield return new WaitForSeconds(displayDuration);
-
-        hintPanel.SetActive(false);
-    }
-
-        public void ShowTimed(string message)
-    {
-        hintText.text = message;
-        hintPanel.SetActive(true);
+        Display(message);
 
         if (hideRoutine != null) StopCoroutine(hideRoutine);
         hideRoutine = StartCoroutine(HideAfterDelay());
+    }
+
+    private void Display(string message)
+    {
+        if (hideRoutine != null) { StopCoroutine(hideRoutine); hideRoutine = null; }
+        hintText.text = message;
+        hintPanel.SetActive(true);
     }
 
     private IEnumerator HideAfterDelay()
