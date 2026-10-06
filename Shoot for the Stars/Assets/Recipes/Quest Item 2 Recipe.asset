@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f82c25d6737e49d439a7ad2cf3cedbc3, type: 3}
+  m_Name: Quest Item 2 Recipe
+  m_EditorClassIdentifier: Assembly-CSharp::ItemRecipeSO
+  recipeName: Quest Item 2 Recipe
+  input:
+  - item: {fileID: 11400000, guid: f53fcebc69bf0354f84281bca2c0d163, type: 2}
+    count: 10
+  - item: {fileID: 11400000, guid: b855c6c07c3f2bd48914389c41351d15, type: 2}
+    count: 5
+  - item: {fileID: 11400000, guid: 5c067445463bb8b46a46a68bd6f65682, type: 2}
+    count: 3
+  output:
+  - item: {fileID: 11400000, guid: 724344d83c472db4cb0a7adbee849813, type: 2}
+    count: 1

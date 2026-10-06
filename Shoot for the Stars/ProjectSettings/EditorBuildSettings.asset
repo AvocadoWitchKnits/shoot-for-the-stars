@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Anne.unity
     guid: e01e5bc067c61a748870aa5099f5c506
   - enabled: 0
-    path: Assets/Scenes/Please use this scene.unity
+    path: Assets/Scenes/Please use Anne's scene.unity
     guid: 746c11cb5a3026a49b8ac387b649285c
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
