@@ -1,8 +1,7 @@
-using System.Collections;
 using UnityEngine;
 
-public class DroppedItem : MonoBehaviour
-{
+public class HeldItem : MonoBehaviour
+{ 
     [Header("Settings")]
     [SerializeField]
     bool autoStart;
@@ -48,3 +47,4 @@ public class DroppedItem : MonoBehaviour
 
 
 }
+
