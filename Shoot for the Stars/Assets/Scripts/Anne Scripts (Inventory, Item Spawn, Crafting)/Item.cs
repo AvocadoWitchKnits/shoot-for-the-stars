@@ -20,6 +20,7 @@ public class Item : ScriptableObject
     public enum ActionType
     {
         Collecting,
-        Crafting
+        Quest_Completion
+
     }
 }
