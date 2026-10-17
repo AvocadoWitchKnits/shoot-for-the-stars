@@ -5,6 +5,9 @@ public class TimeTickSystem : MonoBehaviour
 {
     private const float TICK_TIMER_MAX = 1f;
 
+    [SerializeField] private Spawner spawner;
+    [SerializeField] private int spawnEveryTicks = 5;
+
     private int tick;
     private float tickTimer;
 
@@ -20,6 +23,11 @@ public class TimeTickSystem : MonoBehaviour
         {
             tickTimer -= TICK_TIMER_MAX;
             tick++;
+
+            if (tick % spawnEveryTicks == 0)
+            {
+                spawner.SpawnItem();
+            }
             //Debug.Log("Tick " + tick);
         }
     }
