@@ -335982,7 +335982,6 @@ MonoBehaviour:
   interactionPromptUI: {fileID: 0}
   suckSpeed: 5
   shootRange: 20
-  pauseMenuUI: {fileID: 0}
 --- !u!114 &942902224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336124,10 +336123,6 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 8d387bc9-0a0f-4d02-a82c-4c413a43dd88
     m_ActionName: 'Player/Sprint[/Keyboard/r]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: bc890d82-772a-4a65-91fc-561094c1f098
-    m_ActionName: 'Player/Pause[/Keyboard/escape]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -336247,7 +336242,7 @@ Transform:
   m_GameObject: {fileID: 942902221}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.9319052, z: -0, w: -0.3627019}
-  m_LocalPosition: {x: 712, y: 4, z: 771}
+  m_LocalPosition: {x: 425.6, y: 21.8, z: 144.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
