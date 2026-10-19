@@ -55,6 +55,9 @@ public class FPController : MonoBehaviour
     [Header("Item Suction")]
     public float suckSpeed = 5f;
     public float shootRange = 20f;
+     
+    [Header("Pause Menu")]
+    public GameObject pauseMenuUI;
 
     private CharacterController controller;
     private Vector2 moveInput;
@@ -237,6 +240,21 @@ public class FPController : MonoBehaviour
     {
         Debug.Log("W pressed!");
         TutorialHintUI.Instance.ShowTimed("Press E to interact");
+    }
+
+    public void OnPause(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (pauseMenuUI != null)
+            {
+                bool showPauseMenu = !pauseMenuUI.activeSelf;
+                pauseMenuUI.SetActive(showPauseMenu);
+                Time.timeScale = showPauseMenu ? 0f : 1f;
+                Cursor.lockState = showPauseMenu ? CursorLockMode.None : CursorLockMode.Locked;
+                Cursor.visible = showPauseMenu;
+            }
+        }
     }
 
 
