@@ -361,9 +361,8 @@ public class FPController : MonoBehaviour
     {
         if (EventSystem.current.IsPointerOverGameObject())
             return;
- if (wandAudio != null)
- wandAudio.Play();
  
+
         Ray ray = new Ray(gunPoint.position, gunPoint.forward);
         if (Physics.Raycast(ray, out RaycastHit hit, shootRange))
         {
@@ -371,6 +370,8 @@ public class FPController : MonoBehaviour
             if (item != null)
             {
                 item.SuckIn(gunPoint, suckSpeed);
+                if (wandAudio != null)
+                wandAudio.Play();
 
                 if (suctionParticles != null)
 
