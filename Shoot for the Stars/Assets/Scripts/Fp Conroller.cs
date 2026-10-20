@@ -58,6 +58,7 @@ public class FPController : MonoBehaviour
     public float shootRange = 20f;
 
     [SerializeField] InventoryManager inventoryManager;
+    [SerializeField] private HeldItem heldItem;
 
     private CharacterController controller;
     private Vector2 moveInput;
@@ -65,6 +66,7 @@ public class FPController : MonoBehaviour
     private Vector3 velocity;
     private float verticalRotation = 0f;
 
+    private bool shootRequested;
     // Awake runs once when the GameObject is first loaded.
     private void Awake()
     {
@@ -72,12 +74,18 @@ public class FPController : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        heldItem = GetComponent<HeldItem>();
     }
     private void Update()
     {
         HandleMovement();
         HandleLook();
         InventoryInteract();
+        if (shootRequested)
+        {
+            shootRequested = false;
+            Shoot();
+        }
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -184,7 +192,7 @@ public class FPController : MonoBehaviour
     {
         if (context.performed)
         {
-            Shoot();
+            shootRequested = true;
         }
     }
 
@@ -339,16 +347,35 @@ public class FPController : MonoBehaviour
 
     private void Shoot()
     {
-        if (EventSystem.current.IsPointerOverGameObject())
+        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
             return;
 
         Ray ray = new Ray(gunPoint.position, gunPoint.forward);
         if (Physics.Raycast(ray, out RaycastHit hit, shootRange))
         {
-            QuestPickupItem item = hit.collider.GetComponent<QuestPickupItem>();
-            if (item != null)
+            Storage storage = hit.collider.GetComponentInParent<Storage>();
+
+            if (storage != null)
             {
-                item.SuckIn(gunPoint, suckSpeed);
+                Debug.Log("Storage component found on: " + storage.gameObject.name);
+                Item storageItem = storage.TakeItem();
+
+                if (storageItem != null)
+                {
+                    Debug.Log("Taking item: " + storageItem.name);
+                    heldItem.EquipItem(storageItem);
+                }
+                else
+                {
+                    Debug.Log("Chest had no item");
+                }
+
+                return;
+            }
+            QuestPickupItem questItem = hit.collider.GetComponent<QuestPickupItem>();
+            if (questItem != null)
+            {
+                questItem.SuckIn(gunPoint, suckSpeed);
 
                 if (suctionParticles != null)
                 {
@@ -373,25 +400,27 @@ public class FPController : MonoBehaviour
         }
     }
 
+
     private void InventoryInteract()
     {
-        if (EventSystem.current.IsPointerOverGameObject())
-            return;
-
         Ray ray = new Ray(gunPoint.position, gunPoint.forward);
+
         if (Physics.Raycast(ray, out RaycastHit hit, shootRange))
         {
-            Storage storage = hit.collider.gameObject.GetComponent<Storage>();
+            Storage storage = hit.collider.GetComponentInParent<Storage>();
 
             if (storage != null)
             {
-                if (Keyboard.current.jKey.wasPressedThisFrame && InventoryManager.Instance.isStorageOpened)
+                if (Keyboard.current.jKey.wasPressedThisFrame)
                 {
-                    InventoryManager.Instance.CloseStorage(storage);
-                }
-                else if (Keyboard.current.jKey.wasPressedThisFrame && !InventoryManager.Instance.isStorageOpened)
-                {
-                    InventoryManager.Instance.OpenStorage(storage);
+                    if (InventoryManager.Instance.isStorageOpened)
+                    {
+                        InventoryManager.Instance.CloseStorage(storage);
+                    }
+                    else
+                    {
+                        InventoryManager.Instance.OpenStorage(storage);
+                    }
                 }
             }
         }

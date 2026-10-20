@@ -6,6 +6,7 @@ public class Item : ScriptableObject
 {
     public Sprite image;
     public GameObject prefab;
+    public GameObject heldPrefab;
     public ItemType type;
     public ActionType actionType;
     public Vector2Int range = new Vector2Int(5, 4);

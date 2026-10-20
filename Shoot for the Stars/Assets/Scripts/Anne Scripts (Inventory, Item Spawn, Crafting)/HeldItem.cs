@@ -1,50 +1,44 @@
 using UnityEngine;
 
 public class HeldItem : MonoBehaviour
-{ 
-    [Header("Settings")]
-    [SerializeField]
-    bool autoStart;
+{
+    [SerializeField] private Transform holdPoint;
 
+    private GameObject _itemInHand;
 
-    [Header("State")]
-    public Item item;
-    public bool pickedUp = false;
-
-    void Start()
+    public void EquipItem(Item item)
     {
-        if (autoStart && item != null)
-        {
-            Initialize(item);
-        }
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (!other.CompareTag("Player"))
-            return;
-
-        if (pickedUp)
-            return;
+        Debug.Log("EquipItem received: " + item.name);
 
         if (item == null)
             return;
 
-        bool added = InventoryManager.Instance.AddItem(item);
-
-        if (added)
+        if (item.heldPrefab == null)
         {
-            pickedUp = true;
-            Destroy(gameObject);
+            Debug.LogWarning(item.name + " has no prefab assigned!");
+            return;
         }
+
+        if (_itemInHand != null)
+        {
+            Destroy(_itemInHand);
+        }
+
+        _itemInHand = Instantiate(item.heldPrefab, holdPoint);
+
+        _itemInHand.transform.localPosition = Vector3.zero;
+        _itemInHand.transform.localRotation = Quaternion.identity;
+
+        Debug.Log("Spawned held prefab: " + _itemInHand.name);
     }
 
-    public void Initialize(Item item)
+    public void UnequipItem()
     {
-        this.item = item;
-        var droppedItem = Instantiate(item.prefab, transform);
-        droppedItem.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+        if (_itemInHand == null)
+            return;
+
+        Destroy(_itemInHand);
+        _itemInHand = null;
     }
-
-
 }
 

@@ -2,18 +2,23 @@ using UnityEngine;
 
 public class Storage : MonoBehaviour
 {
+    [SerializeField] private Item storedItem;
     public string name;
     public int size;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public Item TakeItem()
     {
-        
-    }
+        Debug.Log(
+    "TakeItem called on: " + gameObject.name +
+    " | Stored Item: " + (storedItem != null ? storedItem.name : "NULL")
+);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (storedItem == null)
+            return null;
+
+        Item itemToTake = storedItem;
+        storedItem = null;
+
+        return itemToTake;
     }
 }
