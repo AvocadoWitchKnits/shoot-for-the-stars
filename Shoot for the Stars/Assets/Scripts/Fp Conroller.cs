@@ -26,6 +26,9 @@ public class FPController : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform gunPoint;
     public float bulletForce = 10f;
+    
+   
+    
 
     [Header("Suction Effect")]
     public ParticleSystem suctionParticles;
@@ -55,6 +58,11 @@ public class FPController : MonoBehaviour
     [Header("Item Suction")]
     public float suckSpeed = 5f;
     public float shootRange = 20f;
+    public AudioSource wandAudio;
+   
+     
+    [Header("Pause Menu")]
+    public GameObject pauseMenuUI;
 
     private CharacterController controller;
     private Vector2 moveInput;
@@ -239,6 +247,21 @@ public class FPController : MonoBehaviour
         TutorialHintUI.Instance.ShowTimed("Press E to interact");
     }
 
+    public void OnPause(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (pauseMenuUI != null)
+            {
+                bool showPauseMenu = !pauseMenuUI.activeSelf;
+                pauseMenuUI.SetActive(showPauseMenu);
+                Time.timeScale = showPauseMenu ? 0f : 1f;
+                Cursor.lockState = showPauseMenu ? CursorLockMode.None : CursorLockMode.Locked;
+                Cursor.visible = showPauseMenu;
+            }
+        }
+    }
+
 
     private NPC currentNPC;
     private int dialogueIndex = 0;
@@ -334,10 +357,13 @@ public class FPController : MonoBehaviour
 
 
     private void Shoot()
+   
     {
         if (EventSystem.current.IsPointerOverGameObject())
             return;
-
+ if (wandAudio != null)
+ wandAudio.Play();
+ 
         Ray ray = new Ray(gunPoint.position, gunPoint.forward);
         if (Physics.Raycast(ray, out RaycastHit hit, shootRange))
         {
@@ -347,6 +373,7 @@ public class FPController : MonoBehaviour
                 item.SuckIn(gunPoint, suckSpeed);
 
                 if (suctionParticles != null)
+
                 {
                     Debug.Log("Playing suction particles");
                     suctionParticles.Play();
@@ -361,11 +388,12 @@ public class FPController : MonoBehaviour
         }
 
         if (bulletPrefab != null && gunPoint != null)
-        {
+        { 
             GameObject bullet = Instantiate(bulletPrefab, gunPoint.position, gunPoint.rotation);
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
             if (rb != null)
                 rb.AddForce(gunPoint.forward * bulletForce, ForceMode.Impulse);
+                
         }
     }
 }
