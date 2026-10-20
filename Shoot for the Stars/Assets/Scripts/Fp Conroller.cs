@@ -21,6 +21,7 @@ public class FPController : MonoBehaviour
     public Transform cameraTransform;
     public float lookSensitivity = 2f;
     public float verticalLookLimit = 90f;
+    [SerializeField] private Transform itemPoint;
 
     [Header("Shooting")]
     public GameObject bulletPrefab;
@@ -64,12 +65,16 @@ public class FPController : MonoBehaviour
     [Header("Pause Menu")]
     public GameObject pauseMenuUI;
 
+    [SerializeField] InventoryManager inventoryManager;
+    [SerializeField] private HeldItem heldItem;
+
     private CharacterController controller;
     private Vector2 moveInput;
     private Vector2 lookInput;
     private Vector3 velocity;
     private float verticalRotation = 0f;
 
+    private bool shootRequested;
     // Awake runs once when the GameObject is first loaded.
     private void Awake()
     {
@@ -77,11 +82,18 @@ public class FPController : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        heldItem = GetComponent<HeldItem>();
     }
     private void Update()
     {
         HandleMovement();
         HandleLook();
+        InventoryInteract();
+        if (shootRequested)
+        {
+            shootRequested = false;
+            Shoot();
+        }
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -188,7 +200,7 @@ public class FPController : MonoBehaviour
     {
         if (context.performed)
         {
-            Shoot();
+            shootRequested = true;
         }
     }
 
@@ -359,19 +371,45 @@ public class FPController : MonoBehaviour
     private void Shoot()
    
     {
-        if (EventSystem.current.IsPointerOverGameObject())
+        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
             return;
  
 
         Ray ray = new Ray(gunPoint.position, gunPoint.forward);
         if (Physics.Raycast(ray, out RaycastHit hit, shootRange))
         {
-            QuestPickupItem item = hit.collider.GetComponent<QuestPickupItem>();
-            if (item != null)
+            Storage storage = hit.collider.GetComponentInParent<Storage>();
+
+            if (storage != null)
             {
-                item.SuckIn(gunPoint, suckSpeed);
+
+            Debug.Log("Storage component found on: " + storage.gameObject.name);
+            Item storageItem = storage.TakeItem();
+
+            if (storageItem != null)
+            {
+                Debug.Log("Taking item: " + storageItem.name);
+                heldItem.EquipItem(storageItem);
+                InventoryManager.Instance.RefreshStorageUI();
+            }
+            else
+            {
+                Debug.Log("Chest had no item");
+            }
+
+            return;
+            }
+
+            QuestPickupItem questItem = hit.collider.GetComponent<QuestPickupItem>();
+
+            if (questItem != null)
+            {
+                questItem.SuckIn(gunPoint, suckSpeed);
+
                 if (wandAudio != null)
-                wandAudio.Play();
+                {
+                    wandAudio.Play();
+                }
 
                 if (suctionParticles != null)
 
@@ -395,6 +433,32 @@ public class FPController : MonoBehaviour
             if (rb != null)
                 rb.AddForce(gunPoint.forward * bulletForce, ForceMode.Impulse);
                 
+        }
+    }
+
+
+    private void InventoryInteract()
+    {
+        Ray ray = new Ray(gunPoint.position, gunPoint.forward);
+
+        if (Physics.Raycast(ray, out RaycastHit hit, shootRange))
+        {
+            Storage storage = hit.collider.GetComponentInParent<Storage>();
+
+            if (storage != null)
+            {
+                if (Keyboard.current.jKey.wasPressedThisFrame)
+                {
+                    if (InventoryManager.Instance.isStorageOpened)
+                    {
+                        InventoryManager.Instance.CloseStorage(storage);
+                    }
+                    else
+                    {
+                        InventoryManager.Instance.OpenStorage(storage);
+                    }
+                }
+            }
         }
     }
 }
