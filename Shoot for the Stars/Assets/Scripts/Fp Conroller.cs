@@ -21,6 +21,7 @@ public class FPController : MonoBehaviour
     public Transform cameraTransform;
     public float lookSensitivity = 2f;
     public float verticalLookLimit = 90f;
+    [SerializeField] private Transform itemPoint;
 
     [Header("Shooting")]
     public GameObject bulletPrefab;
@@ -56,6 +57,8 @@ public class FPController : MonoBehaviour
     public float suckSpeed = 5f;
     public float shootRange = 20f;
 
+    [SerializeField] InventoryManager inventoryManager;
+
     private CharacterController controller;
     private Vector2 moveInput;
     private Vector2 lookInput;
@@ -74,6 +77,7 @@ public class FPController : MonoBehaviour
     {
         HandleMovement();
         HandleLook();
+        InventoryInteract();
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -366,6 +370,30 @@ public class FPController : MonoBehaviour
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
             if (rb != null)
                 rb.AddForce(gunPoint.forward * bulletForce, ForceMode.Impulse);
+        }
+    }
+
+    private void InventoryInteract()
+    {
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+
+        Ray ray = new Ray(gunPoint.position, gunPoint.forward);
+        if (Physics.Raycast(ray, out RaycastHit hit, shootRange))
+        {
+            Storage storage = hit.collider.gameObject.GetComponent<Storage>();
+
+            if (storage != null)
+            {
+                if (Keyboard.current.jKey.wasPressedThisFrame && InventoryManager.Instance.isStorageOpened)
+                {
+                    InventoryManager.Instance.CloseStorage(storage);
+                }
+                else if (Keyboard.current.jKey.wasPressedThisFrame && !InventoryManager.Instance.isStorageOpened)
+                {
+                    InventoryManager.Instance.OpenStorage(storage);
+                }
+            }
         }
     }
 }

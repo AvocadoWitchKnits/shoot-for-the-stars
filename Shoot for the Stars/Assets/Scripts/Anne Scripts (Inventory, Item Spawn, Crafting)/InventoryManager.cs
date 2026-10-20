@@ -4,9 +4,10 @@ using UnityEngine.InputSystem;
 
 public class InventoryManager : MonoBehaviour
 {
-
+    [HideInInspector] public bool isStorageOpened;
     //test
     //[SerializeField] private Item testItem;
+    [SerializeField] GameObject storageParent;
 
     public static InventoryManager Instance { get; private set; }
     public List<ItemTypeAndCount> items = new List<ItemTypeAndCount>();
@@ -40,6 +41,8 @@ public class InventoryManager : MonoBehaviour
 
     private void Update()
     {
+        storageParent.SetActive(isStorageOpened);
+        
         if (Keyboard.current == null)
             return;
 
@@ -197,6 +200,14 @@ public class InventoryManager : MonoBehaviour
                 AddItem(itemToCraft.item);
             }
         }
+    }
+    public void OpenStorage(Storage storage)
+    {
+        isStorageOpened = true;
+    }
+    public void CloseStorage(Storage storage)
+    {
+        isStorageOpened = false;
     }
 }
 

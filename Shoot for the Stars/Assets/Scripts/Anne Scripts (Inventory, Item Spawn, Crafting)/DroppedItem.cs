@@ -12,6 +12,9 @@ public class DroppedItem : MonoBehaviour
     public Item item;
     public bool pickedUp = false;
 
+    [Header("Held Item Settings")]
+    public Transform ShootPoint;
+
     void Start()
     {
         if (autoStart && item != null)
@@ -42,7 +45,7 @@ public class DroppedItem : MonoBehaviour
     public void Initialize(Item item)
     {
         this.item = item;
-        var droppedItem = Instantiate(item.prefab, transform);
+        var droppedItem = Instantiate(item.prefab, ShootPoint);
         droppedItem.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
     }
 
