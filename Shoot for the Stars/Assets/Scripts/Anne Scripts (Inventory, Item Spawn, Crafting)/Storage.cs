@@ -10,6 +10,17 @@ public class Storage : MonoBehaviour
     {
         get { return storedItem; }
     }
+
+    public void StoreItem(Item item)
+    {
+        storedItem = item;
+    }
+
+    public void ClearItem()
+    {
+        storedItem = null;
+    }
+
     public Item TakeItem()
     {
         Debug.Log(
@@ -26,3 +37,4 @@ public class Storage : MonoBehaviour
         return itemToTake;
     }
 }
+

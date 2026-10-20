@@ -231,5 +231,21 @@ public class InventoryManager : MonoBehaviour
             SpawnNewItem(currentStorage.StoredItem, storageSlot);
         }
     }
+
+    public void StoreItemInOpenStorage(Item item)
+    {
+        if (currentStorage != null)
+        {
+            currentStorage.StoreItem(item);
+        }
+    }
+
+    public void ClearOpenStorage()
+    {
+        if (currentStorage != null)
+        {
+            currentStorage.ClearItem();
+        }
+    }
 }
 
