@@ -38013,6 +38013,7 @@ GameObject:
   - component: {fileID: 95443554}
   - component: {fileID: 95443553}
   - component: {fileID: 95443552}
+  - component: {fileID: 95443556}
   m_Layer: 0
   m_Name: Ingredients Jar (5)
   m_TagString: Untagged
@@ -38115,6 +38116,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &95443556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95443551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 039780648d80a094abce7aaf0ce6091a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Storage
+  storedItem: {fileID: 0}
+  name: 
+  size: 0
 --- !u!1 &95764022
 GameObject:
   m_ObjectHideFlags: 0
@@ -163322,6 +163338,7 @@ GameObject:
   - component: {fileID: 412607215}
   - component: {fileID: 412607214}
   - component: {fileID: 412607213}
+  - component: {fileID: 412607217}
   m_Layer: 0
   m_Name: Ingredients Jar (7)
   m_TagString: Untagged
@@ -163424,6 +163441,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &412607217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412607212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 039780648d80a094abce7aaf0ce6091a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Storage
+  storedItem: {fileID: 0}
+  name: 
+  size: 0
 --- !u!43 &413034404
 Mesh:
   m_ObjectHideFlags: 0
@@ -203562,6 +203594,7 @@ GameObject:
   - component: {fileID: 503544536}
   - component: {fileID: 503544535}
   - component: {fileID: 503544534}
+  - component: {fileID: 503544538}
   m_Layer: 0
   m_Name: Ingredients Jar (4)
   m_TagString: Untagged
@@ -203664,6 +203697,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &503544538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503544533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 039780648d80a094abce7aaf0ce6091a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Storage
+  storedItem: {fileID: 0}
+  name: 
+  size: 0
 --- !u!1 &504657291
 GameObject:
   m_ObjectHideFlags: 0
@@ -379829,6 +379877,7 @@ GameObject:
   - component: {fileID: 958692222}
   - component: {fileID: 958692221}
   - component: {fileID: 958692220}
+  - component: {fileID: 958692224}
   m_Layer: 0
   m_Name: Ingredients Jar (3)
   m_TagString: Untagged
@@ -379931,6 +379980,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &958692224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 958692219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 039780648d80a094abce7aaf0ce6091a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Storage
+  storedItem: {fileID: 0}
+  name: 
+  size: 0
 --- !u!1 &959486097
 GameObject:
   m_ObjectHideFlags: 0
@@ -542782,6 +542846,7 @@ GameObject:
   - component: {fileID: 1381246510}
   - component: {fileID: 1381246509}
   - component: {fileID: 1381246508}
+  - component: {fileID: 1381246512}
   m_Layer: 0
   m_Name: Ingredients Jar (2)
   m_TagString: Untagged
@@ -542884,6 +542949,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1381246512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1381246507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 039780648d80a094abce7aaf0ce6091a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Storage
+  storedItem: {fileID: 0}
+  name: 
+  size: 0
 --- !u!43 &1381554140
 Mesh:
   m_ObjectHideFlags: 0
@@ -545530,6 +545610,7 @@ GameObject:
   - component: {fileID: 1391015975}
   - component: {fileID: 1391015974}
   - component: {fileID: 1391015973}
+  - component: {fileID: 1391015977}
   m_Layer: 0
   m_Name: Ingredients Jar (8)
   m_TagString: Untagged
@@ -545632,6 +545713,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1391015977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1391015972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 039780648d80a094abce7aaf0ce6091a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Storage
+  storedItem: {fileID: 0}
+  name: 
+  size: 0
 --- !u!1 &1392058610
 GameObject:
   m_ObjectHideFlags: 0
@@ -566057,6 +566153,7 @@ GameObject:
   - component: {fileID: 1429335199}
   - component: {fileID: 1429335198}
   - component: {fileID: 1429335197}
+  - component: {fileID: 1429335201}
   m_Layer: 0
   m_Name: Ingredients Jar (1)
   m_TagString: Untagged
@@ -566159,6 +566256,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1429335201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429335196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 039780648d80a094abce7aaf0ce6091a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Storage
+  storedItem: {fileID: 0}
+  name: 
+  size: 0
 --- !u!1 &1430342538
 GameObject:
   m_ObjectHideFlags: 0
@@ -603701,6 +603813,7 @@ GameObject:
   - component: {fileID: 1547743210}
   - component: {fileID: 1547743209}
   - component: {fileID: 1547743208}
+  - component: {fileID: 1547743212}
   m_Layer: 0
   m_Name: Ingredients Jar (9)
   m_TagString: Untagged
@@ -603803,6 +603916,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1547743212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1547743207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 039780648d80a094abce7aaf0ce6091a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Storage
+  storedItem: {fileID: 0}
+  name: 
+  size: 0
 --- !u!43 &1548222942
 Mesh:
   m_ObjectHideFlags: 0
@@ -604527,6 +604655,7 @@ GameObject:
   - component: {fileID: 1549203880}
   - component: {fileID: 1549203879}
   - component: {fileID: 1549203878}
+  - component: {fileID: 1549203882}
   m_Layer: 0
   m_Name: Ingredients Jar (6)
   m_TagString: Untagged
@@ -604629,6 +604758,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1549203882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1549203877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 039780648d80a094abce7aaf0ce6091a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Storage
+  storedItem: {fileID: 0}
+  name: 
+  size: 0
 --- !u!43 &1549435031
 Mesh:
   m_ObjectHideFlags: 0
@@ -633269,6 +633413,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InventoryManager
   isStorageOpened: 0
   storageParent: {fileID: 1311144198}
+  storageSlot: {fileID: 1609633279}
   items: []
   maxStackedItems: 9
   inventorySlots:
@@ -637384,6 +637529,17 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
+--- !u!114 &1609633279 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -5024107770804181298, guid: 8969ef987e8ff494196e2398902f5bd1, type: 3}
+  m_PrefabInstance: {fileID: 1107384782}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4469542a5a1bf8e4eb0b7e0b49712f0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventorySlot
 --- !u!43 &1610392070
 Mesh:
   m_ObjectHideFlags: 0

@@ -6,6 +6,10 @@ public class Storage : MonoBehaviour
     public string name;
     public int size;
 
+    public Item StoredItem
+    {
+        get { return storedItem; }
+    }
     public Item TakeItem()
     {
         Debug.Log(

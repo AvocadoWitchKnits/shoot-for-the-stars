@@ -364,6 +364,7 @@ public class FPController : MonoBehaviour
                 {
                     Debug.Log("Taking item: " + storageItem.name);
                     heldItem.EquipItem(storageItem);
+                    InventoryManager.Instance.RefreshStorageUI();
                 }
                 else
                 {

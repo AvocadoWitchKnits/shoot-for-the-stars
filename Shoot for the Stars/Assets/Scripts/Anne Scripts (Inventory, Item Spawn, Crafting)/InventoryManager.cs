@@ -8,6 +8,9 @@ public class InventoryManager : MonoBehaviour
     //test
     //[SerializeField] private Item testItem;
     [SerializeField] GameObject storageParent;
+    [SerializeField] private InventorySlot storageSlot;
+
+    private Storage currentStorage;
 
     public static InventoryManager Instance { get; private set; }
     public List<ItemTypeAndCount> items = new List<ItemTypeAndCount>();
@@ -203,11 +206,30 @@ public class InventoryManager : MonoBehaviour
     }
     public void OpenStorage(Storage storage)
     {
+        currentStorage = storage;
         isStorageOpened = true;
+        RefreshStorageUI();
     }
     public void CloseStorage(Storage storage)
     {
         isStorageOpened = false;
+        currentStorage = null;
+    }
+
+    public void RefreshStorageUI()
+    {
+        InventoryItem existingItem =
+       storageSlot.GetComponentInChildren<InventoryItem>();
+
+        if (existingItem != null)
+        {
+            Destroy(existingItem.gameObject);
+        }
+
+        if (currentStorage != null && currentStorage.StoredItem != null)
+        {
+            SpawnNewItem(currentStorage.StoredItem, storageSlot);
+        }
     }
 }
 
