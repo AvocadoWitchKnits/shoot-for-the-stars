@@ -38129,6 +38129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Storage
   storedItem: {fileID: 0}
+  storedCount: 1
   name: 
   size: 0
 --- !u!1 &95764022
@@ -163454,6 +163455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Storage
   storedItem: {fileID: 0}
+  storedCount: 1
   name: 
   size: 0
 --- !u!43 &413034404
@@ -203710,6 +203712,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Storage
   storedItem: {fileID: 0}
+  storedCount: 1
   name: 
   size: 0
 --- !u!1 &504657291
@@ -379993,6 +379996,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Storage
   storedItem: {fileID: 0}
+  storedCount: 1
   name: 
   size: 0
 --- !u!1 &959486097
@@ -534490,6 +534494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Storage
   storedItem: {fileID: 11400000, guid: 290c22b964909db49b76360a3203cd80, type: 2}
+  storedCount: 5
   name: 
   size: 0
 --- !u!1 &1357689056
@@ -542966,6 +542971,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Storage
   storedItem: {fileID: 0}
+  storedCount: 1
   name: 
   size: 0
 --- !u!43 &1381554140
@@ -545730,6 +545736,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Storage
   storedItem: {fileID: 0}
+  storedCount: 1
   name: 
   size: 0
 --- !u!1 &1392058610
@@ -566273,6 +566280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Storage
   storedItem: {fileID: 0}
+  storedCount: 1
   name: 
   size: 0
 --- !u!1 &1430342538
@@ -603933,6 +603941,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Storage
   storedItem: {fileID: 0}
+  storedCount: 1
   name: 
   size: 0
 --- !u!43 &1548222942
@@ -604775,6 +604784,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Storage
   storedItem: {fileID: 0}
+  storedCount: 1
   name: 
   size: 0
 --- !u!43 &1549435031

@@ -3,6 +3,10 @@ using UnityEngine;
 public class Storage : MonoBehaviour
 {
     [SerializeField] private Item storedItem;
+    [SerializeField]
+    [Min(0)]
+
+    private int storedCount = 1;
     public string name;
     public int size;
 
@@ -11,14 +15,21 @@ public class Storage : MonoBehaviour
         get { return storedItem; }
     }
 
-    public void StoreItem(Item item)
+    public int StoredCount
+    {
+        get { return storedCount; }
+    }
+
+    public void StoreItem(Item item, int count)
     {
         storedItem = item;
+        storedCount = count;
     }
 
     public void ClearItem()
     {
         storedItem = null;
+        storedCount = 0;
     }
 
     public Item TakeItem()
@@ -28,11 +39,19 @@ public class Storage : MonoBehaviour
     " | Stored Item: " + (storedItem != null ? storedItem.name : "NULL")
 );
 
-        if (storedItem == null)
+        if (storedItem == null || storedCount <= 0)
             return null;
 
         Item itemToTake = storedItem;
-        storedItem = null;
+
+        storedCount--;
+
+        if(storedCount <= 0)
+        {
+            storedItem = null;
+            storedCount = 0;
+        }
+    
 
         return itemToTake;
     }

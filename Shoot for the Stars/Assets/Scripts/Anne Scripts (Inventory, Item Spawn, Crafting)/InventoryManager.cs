@@ -226,17 +226,28 @@ public class InventoryManager : MonoBehaviour
             Destroy(existingItem.gameObject);
         }
 
-        if (currentStorage != null && currentStorage.StoredItem != null)
+        if (currentStorage != null &&
+            currentStorage.StoredItem != null &&
+            currentStorage.StoredCount > 0)
         {
-            SpawnNewItem(currentStorage.StoredItem, storageSlot);
+            GameObject newItemGo =
+                Instantiate(inventoryItemPrefab, storageSlot.transform);
+
+            InventoryItem inventoryItem =
+                newItemGo.GetComponent<InventoryItem>();
+
+            inventoryItem.InitialiseItem(currentStorage.StoredItem);
+
+            inventoryItem.count = currentStorage.StoredCount;
+            inventoryItem.RefreshCount();
         }
     }
 
-    public void StoreItemInOpenStorage(Item item)
+    public void StoreItemInOpenStorage(Item item, int count)
     {
         if (currentStorage != null)
         {
-            currentStorage.StoreItem(item);
+            currentStorage.StoreItem(item, count);
         }
     }
 

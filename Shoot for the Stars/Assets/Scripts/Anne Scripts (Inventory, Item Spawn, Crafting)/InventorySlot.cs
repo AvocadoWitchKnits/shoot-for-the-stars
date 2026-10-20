@@ -42,7 +42,8 @@ public class InventorySlot : MonoBehaviour, IDropHandler
             if (isStorageSlot)
             {
                 InventoryManager.Instance.StoreItemInOpenStorage(
-                    inventoryItem.item
+                    inventoryItem.item,
+                    inventoryItem.count
                 );
             }
 
