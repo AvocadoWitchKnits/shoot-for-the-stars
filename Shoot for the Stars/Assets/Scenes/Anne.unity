@@ -359897,9 +359897,9 @@ MonoBehaviour:
     m_ActionName: 'Player/Jump[/Keyboard/space]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 971847728}
         m_TargetAssemblyTypeName: FPController, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: OnShoot
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -359913,7 +359913,7 @@ MonoBehaviour:
     m_ActionName: 'Player/Shoot[/Mouse/leftButton]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 971847728}
         m_TargetAssemblyTypeName: FPController, Assembly-CSharp
         m_MethodName: OnDialogue
         m_Mode: 0
@@ -359929,7 +359929,7 @@ MonoBehaviour:
     m_ActionName: 'Player/Dialogue[/Keyboard/e]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 971847728}
         m_TargetAssemblyTypeName: FPController, Assembly-CSharp
         m_MethodName: onQuestTracker
         m_Mode: 0
@@ -359945,7 +359945,7 @@ MonoBehaviour:
     m_ActionName: 'Player/Quest Tracker[/Mouse/leftButton]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 971847728}
         m_TargetAssemblyTypeName: FPController, Assembly-CSharp
         m_MethodName: OnKeyGuide
         m_Mode: 0
@@ -359961,7 +359961,7 @@ MonoBehaviour:
     m_ActionName: 'Player/Key guide[/Mouse/leftButton]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 971847728}
         m_TargetAssemblyTypeName: FPController, Assembly-CSharp
         m_MethodName: OnSprint
         m_Mode: 0
@@ -360214,8 +360214,8 @@ MonoBehaviour:
   gravity: -9.81
   jumpHeight: 1.5
   cameraTransform: {fileID: 376367919}
-  lookSensitivity: 2
-  verticalLookLimit: 90
+  lookSensitivity: 0.5
+  verticalLookLimit: 45
   itemPoint: {fileID: 0}
   bulletPrefab: {fileID: 0}
   gunPoint: {fileID: 129401729}
