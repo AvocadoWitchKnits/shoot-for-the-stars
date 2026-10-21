@@ -1,0 +1,560 @@
+fileFormatVersion: 2
+guid: be5664d85a85f34419fe89e49194c773
+ModelImporter:
+  serializedVersion: 24300
+  internalIDToNameTable: []
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+    searchTexturesGlobally: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: 'Armature|Sheep Walk '
+      takeName: 'Armature|Sheep Walk '
+      internalID: -8537695689436212149
+      firstFrame: 0
+      lastFrame: 23
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|Worried_Idle
+      takeName: Armature|Worried_Idle
+      internalID: 5652013971990511041
+      firstFrame: 0
+      lastFrame: 72
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    generateMeshLods: 0
+    meshLodGenerationFlags: 0
+    maximumMeshLod: -1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human:
+    - boneName: CTRLPelvis
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: FKThigh_L
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: FKThigh_R
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: FKCalf_L
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: FKCalf_R
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: FKFoot_L
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: FKFoot_R
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: DEFTorso
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: DEFHead
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: DEFClavicle_L
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: DEFClavicle_R
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: FKUpperArm_L
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: FKUpperArm_R
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: FKForearm_L
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: FKForearm_R
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: DEFHand_L
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: DEFHand_R
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: Miss Shep Animation1(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Armature
+      parentName: Miss Shep Animation1(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Root
+      parentName: Armature
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071067}
+      scale: {x: 1, y: 1, z: 1}
+    - name: CTRLPelvis
+      parentName: Root
+      position: {x: -0, y: 0.9144936, z: 0.010078883}
+      rotation: {x: -0.20458026, y: 0.6768654, z: -0.2045803, w: 0.6768656}
+      scale: {x: 1.0000002, y: 0.9999999, z: 1.0000002}
+    - name: DEFTorso
+      parentName: CTRLPelvis
+      position: {x: -0.000000014901161, y: 0.29916266, z: -7.1054274e-15}
+      rotation: {x: 0.15487456, y: -0.67020017, z: 0.16585387, w: 0.7066387}
+      scale: {x: 1.0000002, y: 1.0000001, z: 1}
+    - name: DEFNeck
+      parentName: DEFTorso
+      position: {x: 0.000000013504177, y: 0.41884315, z: -0.000000016349077}
+      rotation: {x: 0.1528069, y: -0.015314609, z: 0.0056419517, w: 0.9881214}
+      scale: {x: 1, y: 1.0000001, z: 1.0000001}
+    - name: DEFClavicle_L
+      parentName: DEFNeck
+      position: {x: -0.16686018, y: 0.3690567, z: 0.4109492}
+      rotation: {x: -0.3151352, y: 0.46151623, z: -0.6147724, w: -0.5565497}
+      scale: {x: 1, y: 0.9999998, z: 1.0000001}
+    - name: MECHUpperArm_L
+      parentName: DEFClavicle_L
+      position: {x: -0.055442058, y: 0.50674844, z: -0.0030911285}
+      rotation: {x: -0.31791002, y: -0.02855974, z: 0.3507646, w: -0.8803873}
+      scale: {x: 0.99999994, y: 0.9999998, z: 1.0000002}
+    - name: MECHForearm_L
+      parentName: MECHUpperArm_L
+      position: {x: -0.000000057742, y: 0.52803767, z: 0.000000070314854}
+      rotation: {x: 0.012450662, y: -0.026899321, z: -0.10286613, w: 0.99425346}
+      scale: {x: 0.99999994, y: 1.0000007, z: 0.9999995}
+    - name: FKUpperArm_L
+      parentName: DEFClavicle_L
+      position: {x: -0.055442028, y: 0.50674844, z: -0.0030911136}
+      rotation: {x: -0.07690112, y: -0.03631956, z: 0.09633652, w: -0.9917089}
+      scale: {x: 1.0000001, y: 1, z: 1.0000002}
+    - name: FKForearm_L
+      parentName: FKUpperArm_L
+      position: {x: 0.000000007450581, y: 0.52803785, z: 0.000000007450581}
+      rotation: {x: -0.007836882, y: -0.025989389, z: -0.019139476, w: 0.99944836}
+      scale: {x: 1, y: 1.0000007, z: 0.99999976}
+    - name: DEFHand_L
+      parentName: FKForearm_L
+      position: {x: -0.0000000055879354, y: 0.46617505, z: -0.00000014342368}
+      rotation: {x: -0.09616859, y: -0.02976699, z: 0.05039811, w: 0.99364257}
+      scale: {x: 1, y: 0.99999994, z: 1.0000001}
+    - name: DEFHead
+      parentName: DEFNeck
+      position: {x: 0.000000030733645, y: 0.4446372, z: -0.000000013504177}
+      rotation: {x: -0.23236862, y: 0.007216176, z: -0.009931869, w: 0.97255033}
+      scale: {x: 0.99999994, y: 1.0000001, z: 1}
+    - name: IKWristControl_L
+      parentName: DEFNeck
+      position: {x: -1.3905123, y: -0.031594604, z: 0.102788135}
+      rotation: {x: -0.7670326, y: -0.006499542, z: -0.010010183, w: 0.6414971}
+      scale: {x: 0.99999994, y: 1.0000002, z: 1.0000002}
+    - name: DEFClavicle_R
+      parentName: DEFNeck
+      position: {x: 0.15219231, y: 0.36814016, z: 0.41851133}
+      rotation: {x: 0.33093798, y: 0.44729206, z: -0.6087288, w: 0.5655609}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: MECHUpperArm_R
+      parentName: DEFClavicle_R
+      position: {x: 0.055442095, y: 0.50674844, z: -0.0030915737}
+      rotation: {x: 0.3179101, y: -0.028559681, z: 0.3507645, w: 0.8803873}
+      scale: {x: 1.0000005, y: 1.0000002, z: 1.0000006}
+    - name: MECHForearm_R
+      parentName: MECHUpperArm_R
+      position: {x: -0.000000014901161, y: 0.528038, z: -0.000000088475645}
+      rotation: {x: 0.012450365, y: 0.026899358, z: 0.10286639, w: 0.99425346}
+      scale: {x: 0.9999998, y: 1.0000001, z: 1.0000001}
+    - name: FKUpperArm_R
+      parentName: DEFClavicle_R
+      position: {x: 0.05544205, y: 0.50674844, z: -0.0030914452}
+      rotation: {x: 0.076900885, y: -0.036319636, z: 0.09633669, w: 0.9917089}
+      scale: {x: 0.99999994, y: 0.9999997, z: 1.0000004}
+    - name: FKForearm_R
+      parentName: FKUpperArm_R
+      position: {x: -0.0000000018626451, y: 0.5280379, z: 0.00000006798655}
+      rotation: {x: -0.007837337, y: 0.025989441, z: 0.019139428, w: 0.9994483}
+      scale: {x: 1.0000004, y: 1.0000006, z: 1.0000001}
+    - name: DEFHand_R
+      parentName: FKForearm_R
+      position: {x: 0.000000011175871, y: 0.46617496, z: 0.00000014156103}
+      rotation: {x: -0.09616859, y: 0.02976715, z: -0.050398175, w: 0.9936426}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+    - name: IKWristControl_R
+      parentName: DEFNeck
+      position: {x: 1.3866771, y: -0.0496785, z: 0.17042921}
+      rotation: {x: -0.7670326, y: -0.006499542, z: -0.010010183, w: 0.6414971}
+      scale: {x: 0.99999994, y: 1.0000002, z: 1.0000002}
+    - name: DEFPelvis
+      parentName: CTRLPelvis
+      position: {x: -0.000000014901161, y: 0.29916266, z: -7.1054274e-15}
+      rotation: {x: 0.00000023841858, y: 0.000000029802322, z: 1, w: 0.000000014901161}
+      scale: {x: 1.0000002, y: 1.0000004, z: 1.0000002}
+    - name: MECHThigh_L
+      parentName: DEFPelvis
+      position: {x: -0.108174376, y: 0.15855744, z: -0.17703015}
+      rotation: {x: -0.06519248, y: -0.009504458, z: 0.1439554, w: 0.98738873}
+      scale: {x: 1.0000004, y: 1.0000006, z: 1.0000006}
+    - name: MECHCalf_L
+      parentName: MECHThigh_L
+      position: {x: 0.00000015646219, y: 0.44652718, z: 0.000000013038516}
+      rotation: {x: 0.13265277, y: -0.034595564, z: 0.29821765, w: 0.94460183}
+      scale: {x: 1.0000011, y: 1.0000002, z: 1.0000007}
+    - name: MECHFoot_L
+      parentName: MECHCalf_L
+      position: {x: 0.000000015133992, y: 0.43815798, z: 0.000000030267984}
+      rotation: {x: -0.11055942, y: 0.18781152, z: -0.72277, w: 0.65582544}
+      scale: {x: 1.0000005, y: 0.99999994, z: 1.0000023}
+    - name: FKThigh_L
+      parentName: DEFPelvis
+      position: {x: -0.10817435, y: 0.15855752, z: -0.17703015}
+      rotation: {x: -0.05790562, y: -0.00648583, z: 0.17297459, w: 0.98320127}
+      scale: {x: 1.0000004, y: 1.0000006, z: 1.0000006}
+    - name: FKCalf_L
+      parentName: FKThigh_L
+      position: {x: 0.000000015832484, y: 0.4465271, z: -0.0000000038417056}
+      rotation: {x: 0.13265277, y: -0.034595564, z: 0.29821765, w: 0.94460183}
+      scale: {x: 1.0000002, y: 0.99999994, z: 1.0000002}
+    - name: FKFoot_L
+      parentName: FKCalf_L
+      position: {x: -0.00000009278301, y: 0.43815792, z: -0.000000022351742}
+      rotation: {x: -0.11033936, y: 0.18170708, z: -0.74328816, w: 0.6342953}
+      scale: {x: 1.0000006, y: 1.0000005, z: 1.0000014}
+    - name: MECHThigh_R
+      parentName: DEFPelvis
+      position: {x: -0.10817421, y: 0.15855746, z: 0.17703018}
+      rotation: {x: -0.14395535, y: 0.98738873, z: 0.06519252, w: -0.009504601}
+      scale: {x: 0.9999999, y: 0.99999946, z: 1.0000004}
+    - name: MECHCalf_R
+      parentName: MECHThigh_R
+      position: {x: 0.000000014901161, y: 0.44652715, z: -0.00000005820766}
+      rotation: {x: -0.13265263, y: -0.034595612, z: 0.2982176, w: -0.9446019}
+      scale: {x: 1.0000006, y: 0.9999994, z: 1.0000004}
+    - name: MECHFoot_R
+      parentName: MECHCalf_R
+      position: {x: 0.000000018859282, y: 0.43815795, z: 0.0000000114087015}
+      rotation: {x: 0.11055924, y: 0.18781152, z: -0.7227698, w: -0.6558257}
+      scale: {x: 1.000002, y: 1.0000002, z: 1.0000023}
+    - name: FKThigh_R
+      parentName: DEFPelvis
+      position: {x: -0.10817424, y: 0.15855747, z: 0.17703018}
+      rotation: {x: -0.17297447, y: 0.98320127, z: 0.057905648, w: -0.0064859185}
+      scale: {x: 1.0000004, y: 1.0000004, z: 1.0000005}
+    - name: FKCalf_R
+      parentName: FKThigh_R
+      position: {x: 0.00000002142042, y: 0.4465272, z: -0.000000016763806}
+      rotation: {x: -0.13265263, y: -0.034595612, z: 0.2982176, w: -0.9446019}
+      scale: {x: 1.0000002, y: 0.9999992, z: 1.0000002}
+    - name: FKFoot_R
+      parentName: FKCalf_R
+      position: {x: 0.0000000030267984, y: 0.438158, z: 0.0000000060535967}
+      rotation: {x: 0.110339284, y: 0.18170698, z: -0.743288, w: -0.6342956}
+      scale: {x: 1.0000007, y: 1.0000001, z: 1.000001}
+    - name: CTRLTorso
+      parentName: CTRLPelvis
+      position: {x: -0.000000014901161, y: 0.29916266, z: -7.1054274e-15}
+      rotation: {x: 0.15487458, y: -0.67020017, z: 0.16585386, w: 0.7066387}
+      scale: {x: 1.0000001, y: 1, z: 1.0000002}
+    - name: Switch
+      parentName: Root
+      position: {x: 0.0033104867, y: 4.7148805, z: -0.7758069}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: IKKneePole_L
+      parentName: Armature
+      position: {x: -0.23573823, y: -0.85218626, z: 0.54843444}
+      rotation: {x: 0.00000026822093, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 0.9999999, z: 0.9999999}
+    - name: IKFootControl_L
+      parentName: Armature
+      position: {x: -0.34349957, y: 0.65139055, z: 0.35503784}
+      rotation: {x: 0.000000029802326, y: 0.000000014901163, z: -0.2395325, w: 0.9708884}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MECHHeelPeel_L
+      parentName: IKFootControl_L
+      position: {x: -0.007649921, y: 0.4301185, z: 0.003265915}
+      rotation: {x: 0.99938875, y: 0.008628741, z: -0.032891247, w: 0.008114726}
+      scale: {x: 1.0000001, y: 1.000001, z: 1.0000002}
+    - name: MECHHoofNoRoll_L
+      parentName: MECHHeelPeel_L
+      position: {x: -0.000000059604645, y: 0.4302389, z: 0.000000016763806}
+      rotation: {x: -0.9985744, y: 0.00000003259629, z: 0.05337889, w: 0.000000060594175}
+      scale: {x: 0.9999999, y: 0.9999997, z: 1.0000002}
+    - name: IKFoot_L
+      parentName: MECHHoofNoRoll_L
+      position: {x: -0.028302334, y: 0.3662366, z: 0.109893784}
+      rotation: {x: 0.67281604, y: -0.07833096, z: 0.7253473, w: -0.122696035}
+      scale: {x: 1.0000004, y: 1.0000004, z: 1.0000024}
+    - name: CTRLHeel_L
+      parentName: IKFootControl_L
+      position: {x: -0.03844911, y: 0.36802268, z: 0.11289496}
+      rotation: {x: -0.010932466, y: -0.002697209, z: 0.2395173, w: 0.97082686}
+      scale: {x: 0.99999976, y: 0.9999998, z: 1.0000001}
+    - name: IKElbowPole_L
+      parentName: Armature
+      position: {x: -0.9375973, y: 0.89240754, z: 1.8413258}
+      rotation: {x: 0.00000008940697, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: IKKneePole_R
+      parentName: Armature
+      position: {x: 0.23573823, y: -0.85218626, z: 0.54843444}
+      rotation: {x: 0.00000026822093, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 0.9999999, z: 0.9999999}
+    - name: IKFootControl_R
+      parentName: Armature
+      position: {x: 0.3463131, y: -0.73470914, z: 0.120494716}
+      rotation: {x: 0.000000029802326, y: -0.000000014901163, z: 0.2395325, w: 0.9708884}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: MECHHeelPeel_R
+      parentName: IKFootControl_R
+      position: {x: 0.007649973, y: 0.43011832, z: 0.0032659988}
+      rotation: {x: 0.99938875, y: -0.008628741, z: 0.032891247, w: 0.008114726}
+      scale: {x: 1.0000001, y: 1.0000006, z: 1.0000004}
+    - name: MECHHoofNoRoll_R
+      parentName: MECHHeelPeel_R
+      position: {x: -0.0000000018626451, y: 0.43023884, z: 0.000000018626451}
+      rotation: {x: -0.9985744, y: -0.00000003259629, z: -0.05337889, w: 0.000000060594175}
+      scale: {x: 1.0000002, y: 0.99999994, z: 1}
+    - name: IKFoot_R
+      parentName: MECHHoofNoRoll_R
+      position: {x: 0.028302263, y: 0.3662367, z: 0.10989385}
+      rotation: {x: -0.67281604, y: -0.07833096, z: 0.7253473, w: 0.122696035}
+      scale: {x: 1.0000002, y: 0.9999998, z: 1.0000023}
+    - name: CTRLHeel_R
+      parentName: IKFootControl_R
+      position: {x: 0.038449135, y: 0.3680227, z: 0.11289498}
+      rotation: {x: -0.010932466, y: 0.002697209, z: -0.2395173, w: 0.97082686}
+      scale: {x: 0.99999994, y: 1.0000002, z: 1.0000002}
+    - name: IKElbowPole_R
+      parentName: Armature
+      position: {x: 0.9375973, y: 0.89240754, z: 1.8413258}
+      rotation: {x: 0.00000008940697, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: Miss Shep Low Poly
+      parentName: Miss Shep Animation1(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 3
+  humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
