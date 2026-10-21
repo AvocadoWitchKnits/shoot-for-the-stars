@@ -4,11 +4,20 @@ using UnityEngine;
 
 public class Spawner: MonoBehaviour
 {
-    public GameObject cubePrefab;
+    [SerializeField] private GameObject droppedItemPrefab;
+    [SerializeField] private Item itemToSpawn; 
 
-    private void Start()
+
+    public void SpawnItem()
     {
-        Instantiate(cubePrefab, transform.position, Quaternion.identity);
+        GameObject spawnedObject = Instantiate(droppedItemPrefab, transform.position, Quaternion.identity);
+            
+        DroppedItem droppedItem = spawnedObject.GetComponent<DroppedItem>();
+
+        if (droppedItem != null)
+        {
+            droppedItem.item = itemToSpawn;
+        }
     }
 }
 
