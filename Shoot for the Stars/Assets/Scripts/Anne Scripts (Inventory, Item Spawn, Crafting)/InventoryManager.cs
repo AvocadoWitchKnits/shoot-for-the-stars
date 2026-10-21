@@ -4,9 +4,13 @@ using UnityEngine.InputSystem;
 
 public class InventoryManager : MonoBehaviour
 {
-
+    [HideInInspector] public bool isStorageOpened;
     //test
     //[SerializeField] private Item testItem;
+    [SerializeField] GameObject storageParent;
+    [SerializeField] private InventorySlot storageSlot;
+
+    private Storage currentStorage;
 
     public static InventoryManager Instance { get; private set; }
     public List<ItemTypeAndCount> items = new List<ItemTypeAndCount>();
@@ -40,6 +44,8 @@ public class InventoryManager : MonoBehaviour
 
     private void Update()
     {
+        storageParent.SetActive(isStorageOpened);
+        
         if (Keyboard.current == null)
             return;
 
@@ -196,6 +202,60 @@ public class InventoryManager : MonoBehaviour
             {
                 AddItem(itemToCraft.item);
             }
+        }
+    }
+    public void OpenStorage(Storage storage)
+    {
+        currentStorage = storage;
+        isStorageOpened = true;
+        RefreshStorageUI();
+    }
+    public void CloseStorage(Storage storage)
+    {
+        isStorageOpened = false;
+        currentStorage = null;
+    }
+
+    public void RefreshStorageUI()
+    {
+        InventoryItem existingItem =
+       storageSlot.GetComponentInChildren<InventoryItem>();
+
+        if (existingItem != null)
+        {
+            Destroy(existingItem.gameObject);
+        }
+
+        if (currentStorage != null &&
+            currentStorage.StoredItem != null &&
+            currentStorage.StoredCount > 0)
+        {
+            GameObject newItemGo =
+                Instantiate(inventoryItemPrefab, storageSlot.transform);
+
+            InventoryItem inventoryItem =
+                newItemGo.GetComponent<InventoryItem>();
+
+            inventoryItem.InitialiseItem(currentStorage.StoredItem);
+
+            inventoryItem.count = currentStorage.StoredCount;
+            inventoryItem.RefreshCount();
+        }
+    }
+
+    public void StoreItemInOpenStorage(Item item, int count)
+    {
+        if (currentStorage != null)
+        {
+            currentStorage.StoreItem(item, count);
+        }
+    }
+
+    public void ClearOpenStorage()
+    {
+        if (currentStorage != null)
+        {
+            currentStorage.ClearItem();
         }
     }
 }
