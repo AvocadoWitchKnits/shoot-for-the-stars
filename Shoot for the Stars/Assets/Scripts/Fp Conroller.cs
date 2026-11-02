@@ -371,6 +371,11 @@ public class FPController : MonoBehaviour
     private void Shoot()
    
     {
+        if (heldItem.IsHoldingItem())
+        {
+            heldItem.Drop();
+            return;
+        }
         if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
             return;
  
