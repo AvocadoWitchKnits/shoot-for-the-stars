@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f82c25d6737e49d439a7ad2cf3cedbc3, type: 3}
   m_Name: Test Recipe
   m_EditorClassIdentifier: Assembly-CSharp::ItemRecipeSO
-  recipeName: Cheese platter
+  recipeName: Bees Platter
   input:
-  - item: {fileID: 11400000, guid: e5d6460fdded1bc4a80945040776b48e, type: 2}
-    count: 2
+  - item: {fileID: 11400000, guid: 290c22b964909db49b76360a3203cd80, type: 2}
+    count: 1
   output:
-  - item: {fileID: 11400000, guid: e5d6460fdded1bc4a80945040776b48e, type: 2}
+  - item: {fileID: 11400000, guid: 290c22b964909db49b76360a3203cd80, type: 2}
     count: 10

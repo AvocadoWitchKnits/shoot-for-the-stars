@@ -89,6 +89,7 @@ public class FPController : MonoBehaviour
         HandleMovement();
         HandleLook();
         InventoryInteract();
+        CraftingInteract();
         if (shootRequested)
         {
             shootRequested = false;
@@ -462,6 +463,25 @@ public class FPController : MonoBehaviour
                     {
                         InventoryManager.Instance.OpenStorage(storage);
                     }
+                }
+            }
+        }
+    }
+
+    private void CraftingInteract()
+    {
+        Ray ray = new Ray(gunPoint.position, gunPoint.forward);
+
+        if (Physics.Raycast(ray, out RaycastHit hit, shootRange))
+        {
+            CauldronCrafting cauldronCrafting =
+                hit.collider.GetComponentInParent<CauldronCrafting>();
+
+            if (cauldronCrafting != null)
+            {
+                if (Keyboard.current.cKey.wasPressedThisFrame)
+                {
+                    cauldronCrafting.Interact();
                 }
             }
         }

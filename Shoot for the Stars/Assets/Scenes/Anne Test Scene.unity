@@ -278019,8 +278019,9 @@ GameObject:
   - component: {fileID: 714146779}
   - component: {fileID: 714146778}
   - component: {fileID: 714146777}
+  - component: {fileID: 714146780}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: Cauldron Stand-in
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -278035,10 +278036,11 @@ Transform:
   m_GameObject: {fileID: 714146775}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.6732788, y: -0.17958975, z: 2.0549927}
+  m_LocalPosition: {x: 20.454, y: 1.526, z: 5.032}
   m_LocalScale: {x: 0.61256, y: 0.32777882, z: 0.5695}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 725958261}
   m_Father: {fileID: 523796431}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &714146777
@@ -278121,6 +278123,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 714146775}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &714146780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714146775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ab07a022fdf1594485f6a54c0fe49ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CauldronCrafting
+  craftingBench: {fileID: 1748619108}
 --- !u!43 &714905164
 Mesh:
   m_ObjectHideFlags: 0
@@ -279884,6 +279899,37 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
+--- !u!1 &725958260
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 725958261}
+  m_Layer: 0
+  m_Name: CraftedItemSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &725958261
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 725958260}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.64, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 714146776}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &727203041
 GameObject:
   m_ObjectHideFlags: 0
@@ -490531,6 +490577,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8009987137999418058, guid: 9652f3fe68a220441b8357ac9334e903, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1748619104}
+    - targetCorrespondingSourceObject: {fileID: 8009987137999418058, guid: 9652f3fe68a220441b8357ac9334e903, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1748619108}
     - targetCorrespondingSourceObject: {fileID: 8485173162082002552, guid: 9652f3fe68a220441b8357ac9334e903, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1373115086}
@@ -654915,6 +654964,22 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6830945432629781959, guid: 9652f3fe68a220441b8357ac9334e903, type: 3}
   m_PrefabInstance: {fileID: 1299404946}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1748619108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748619102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656f349993329d247bd75df19a196375, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CraftingBench
+  recipes:
+  - {fileID: 11400000, guid: 2be4f9c44eedef84283f03a61e8bcf6b, type: 2}
+  placeItemsAreaBoxCollider: {fileID: 958784383}
+  craftedItemSpawnPoint: {fileID: 725958261}
 --- !u!43 &1749453731
 Mesh:
   m_ObjectHideFlags: 0
