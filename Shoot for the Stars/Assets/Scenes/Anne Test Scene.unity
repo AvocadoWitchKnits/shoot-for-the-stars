@@ -234672,7 +234672,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 682378ded6adbd64ea7ecd75fd4108dc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 403.82
+      value: 403.611
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 682378ded6adbd64ea7ecd75fd4108dc, type: 3}
       propertyPath: m_LocalPosition.y
@@ -234680,7 +234680,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 682378ded6adbd64ea7ecd75fd4108dc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 153
+      value: 153.004
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 682378ded6adbd64ea7ecd75fd4108dc, type: 3}
       propertyPath: m_LocalRotation.w
@@ -469752,7 +469752,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!136 &1226789331
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -537710,7 +537710,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 741a6824397c10f43926768068beb7a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CraftingButton
-  recipe: {fileID: 11400000, guid: 2be4f9c44eedef84283f03a61e8bcf6b, type: 2}
 --- !u!114 &1439325990
 MonoBehaviour:
   m_ObjectHideFlags: 0
