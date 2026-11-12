@@ -410,7 +410,8 @@ public class FPController : MonoBehaviour
 
             if (questItem != null)
             {
-                questItem.SuckIn(gunPoint, suckSpeed);
+                questItem.SuckIn(gunPoint, suckSpeed, () => QuestManager.Instance.OnItemPickedUp(questItem.itemName)
+);
 
                 if (wandAudio != null)
                 {

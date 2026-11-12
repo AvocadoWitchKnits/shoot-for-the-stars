@@ -66,11 +66,11 @@ public class Spawner: MonoBehaviour
         DroppedItem droppedItem =
             spawnedObject.GetComponent<DroppedItem>();
 
-        if (droppedItem != null)
+        if (droppedItem == null)
         {
-            droppedItem.item = itemToSpawn;
+            droppedItem = spawnedObject.AddComponent<DroppedItem>(); ;
         }
-
+        droppedItem.item = itemToSpawn;
         spawnedCount++;
 
         Debug.Log(
