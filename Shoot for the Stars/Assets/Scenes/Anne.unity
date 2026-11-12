@@ -166762,13 +166762,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 423043075}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.3073819, y: 0.6368017, z: -0.63680166, w: 0.30738196}
-  m_LocalPosition: {x: 426.5721, y: 12.09, z: 146.61652}
+  m_LocalRotation: {x: 0.49757153, y: 0.50241673, z: -0.5024167, w: 0.49757162}
+  m_LocalPosition: {x: 393.19, y: 10.011, z: 143.11}
   m_LocalScale: {x: 0.035742246, y: 0.035742246, z: 0.035742246}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: -128.467}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: -90.555}
 --- !u!114 &423043078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -396589,13 +396589,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1060850855}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5240384, y: 0.474746, z: -0.47474593, w: 0.52403843}
-  m_LocalPosition: {x: 429.7352, y: 12.42, z: 143.90773}
+  m_LocalRotation: {x: 0.605068, y: 0.36591354, z: -0.36591345, w: 0.6050681}
+  m_LocalPosition: {x: 404.386, y: 10.944, z: 142.919}
   m_LocalScale: {x: 0.035742246, y: 0.035742246, z: 0.035742246}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 89.98, y: 0, z: -84.349}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: -62.327}
 --- !u!114 &1060850858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -452417,6 +452417,7 @@ GameObject:
   - component: {fileID: 1204190733}
   - component: {fileID: 1204190736}
   - component: {fileID: 1204190735}
+  - component: {fileID: 1204190737}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Untagged
@@ -452491,13 +452492,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1204190732}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.4016977, y: 0.581927, z: -0.58192694, w: 0.4016977}
-  m_LocalPosition: {x: 422.26392, y: 12.09, z: 148.17877}
+  m_LocalRotation: {x: 0.5150685, y: 0.48446313, z: -0.48446307, w: 0.5150684}
+  m_LocalPosition: {x: 380.04, y: 9.302, z: 142.56}
   m_LocalScale: {x: 0.035742246, y: 0.035742246, z: 0.035742246}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: -110.766}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: -86.492}
 --- !u!114 &1204190735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -452529,8 +452530,24 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 21.600002, y: 38.400005, z: 9}
+  m_Size: {x: 70, y: 100, z: 70}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1204190737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1204190732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c5b389c7efcdbb4cb582ee55afc3664, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TutorialTrigger
+  hintId: 1
+  message: Follow the arrows to talk to your first villager then explore the world
+    to find more villagers
+  showOnce: 1
 --- !u!43 &1204728207
 Mesh:
   m_ObjectHideFlags: 0
@@ -727616,13 +727633,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1897228723}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5240384, y: 0.474746, z: -0.47474593, w: 0.52403843}
-  m_LocalPosition: {x: 435.11, y: 12.64, z: 144.44}
+  m_LocalRotation: {x: 0.70013714, y: 0.099035546, z: -0.09903544, w: 0.70013714}
+  m_LocalPosition: {x: 416.331, y: 10.851, z: 154.399}
   m_LocalScale: {x: 0.035742246, y: 0.035742246, z: 0.035742246}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 89.98, y: 0, z: -84.349}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: -16.102}
 --- !u!114 &1897228726
 MonoBehaviour:
   m_ObjectHideFlags: 0
