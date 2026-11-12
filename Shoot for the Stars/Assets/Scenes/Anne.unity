@@ -17947,9 +17947,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 31388002}
+      - m_Target: {fileID: 534594368}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: ToggleKeyGuide
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -755810,7 +755810,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 401137709}
   - {fileID: 1457320886}
   - {fileID: 108726689}
   m_Father: {fileID: 2098328517}
@@ -785817,7 +785816,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 606246490}
         m_TargetAssemblyTypeName: UIAudio, Assembly-CSharp
         m_MethodName: PlayClick
         m_Mode: 1
@@ -811575,6 +811574,7 @@ RectTransform:
   - {fileID: 476787984}
   - {fileID: 701189626}
   - {fileID: 567120384}
+  - {fileID: 1945578233}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
