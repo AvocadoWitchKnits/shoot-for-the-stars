@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Herbs
   m_EditorClassIdentifier: Assembly-CSharp::Item
   image: {fileID: 21300000, guid: 96386c8a533f91349bcdf5b9d4eab7b6, type: 3}
-  prefab: {fileID: 8293592008166219080, guid: 424af460724775b468aceba22eff8242, type: 3}
+  prefab: {fileID: 2304130744597569973, guid: 819313c1df6e3f2458ee3d90c36cbfc4, type: 3}
+  heldPrefab: {fileID: 2304130744597569973, guid: 819313c1df6e3f2458ee3d90c36cbfc4, type: 3}
   type: 0
   actionType: 0
   range: {x: 5, y: 4}
