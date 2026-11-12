@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenuUI;
+     public GameObject KeyGuidePanel;
     private bool isPaused = false;
 
     private void Start()
@@ -49,4 +50,18 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    public void PauseMenuScreen()
+    {
+        pauseMenuUI.SetActive(true);
+        
+    }
+     public void ToggleKeyGuide()
+    {
+
+        bool isNowActive = !KeyGuidePanel.activeSelf;
+        KeyGuidePanel.SetActive(isNowActive);
+        Time.timeScale = isNowActive ? 0f : 1f;
+    }
+    
 }
