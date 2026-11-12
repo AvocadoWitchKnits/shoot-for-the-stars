@@ -166764,7 +166764,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.49757153, y: 0.50241673, z: -0.5024167, w: 0.49757162}
   m_LocalPosition: {x: 393.19, y: 10.011, z: 143.11}
-  m_LocalScale: {x: 0.035742246, y: 0.035742246, z: 0.035742246}
+  m_LocalScale: {x: 0.055539876, y: 0.055539876, z: 0.055539876}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -166800,7 +166800,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 21.600002, y: 38.399998, z: 9}
+  m_Size: {x: 200, y: 38.399998, z: 9}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!43 &423967986
 Mesh:
@@ -396591,7 +396591,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.605068, y: 0.36591354, z: -0.36591345, w: 0.6050681}
   m_LocalPosition: {x: 404.386, y: 10.944, z: 142.919}
-  m_LocalScale: {x: 0.035742246, y: 0.035742246, z: 0.035742246}
+  m_LocalScale: {x: 0.055539876, y: 0.055539876, z: 0.055539876}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -396627,7 +396627,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 21.599997, y: 38.39999, z: 9}
+  m_Size: {x: 200, y: 38.39999, z: 9}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1063270279
 GameObject:
@@ -452417,7 +452417,6 @@ GameObject:
   - component: {fileID: 1204190733}
   - component: {fileID: 1204190736}
   - component: {fileID: 1204190735}
-  - component: {fileID: 1204190737}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Untagged
@@ -452494,7 +452493,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.5150685, y: 0.48446313, z: -0.48446307, w: 0.5150684}
   m_LocalPosition: {x: 380.04, y: 9.302, z: 142.56}
-  m_LocalScale: {x: 0.035742246, y: 0.035742246, z: 0.035742246}
+  m_LocalScale: {x: 0.055539876, y: 0.055539876, z: 0.055539876}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -452530,24 +452529,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 70, y: 100, z: 70}
+  m_Size: {x: 200, y: 100, z: 70}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1204190737
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1204190732}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c5b389c7efcdbb4cb582ee55afc3664, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TutorialTrigger
-  hintId: 1
-  message: Follow the arrows to talk to your first villager then explore the world
-    to find more villagers
-  showOnce: 1
 --- !u!43 &1204728207
 Mesh:
   m_ObjectHideFlags: 0
@@ -727558,7 +727541,7 @@ GameObject:
   - component: {fileID: 1897228725}
   - component: {fileID: 1897228724}
   - component: {fileID: 1897228727}
-  - component: {fileID: 1897228726}
+  - component: {fileID: 1897228728}
   m_Layer: 0
   m_Name: Arrow (3)
   m_TagString: Untagged
@@ -727635,23 +727618,11 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.70013714, y: 0.099035546, z: -0.09903544, w: 0.70013714}
   m_LocalPosition: {x: 416.331, y: 10.851, z: 154.399}
-  m_LocalScale: {x: 0.035742246, y: 0.035742246, z: 0.035742246}
+  m_LocalScale: {x: 0.055539876, y: 0.055539876, z: 0.055539876}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: -16.102}
---- !u!114 &1897228726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1897228723}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d14934138695e54394cb633c15af7f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ArrowDisappear
 --- !u!65 &1897228727
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -727671,8 +727642,20 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 21.599997, y: 38.39999, z: 9}
+  m_Size: {x: 200, y: 38.39999, z: 70}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1897228728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1897228723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d14934138695e54394cb633c15af7f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ArrowDisappear
 --- !u!1 &1897814805
 GameObject:
   m_ObjectHideFlags: 0
@@ -766207,6 +766190,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9fba6b70ed9174749a0305008d09acc9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1983606072}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9fba6b70ed9174749a0305008d09acc9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1983606075}
   m_SourcePrefab: {fileID: 100100000, guid: 9fba6b70ed9174749a0305008d09acc9, type: 3}
 --- !u!4 &1983606070 stripped
 Transform:
@@ -766233,12 +766219,28 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.09, y: 0.09, z: 0.05}
+  m_Size: {x: 0.09, y: 0.9, z: 0.05}
   m_Center: {x: -0.0029011255, y: -0.0009474789, z: 0.015002253}
+--- !u!114 &1983606075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1983606071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c5b389c7efcdbb4cb582ee55afc3664, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TutorialTrigger
+  hintId: 
+  message: Follow the arrows to talk to your first villager then explore the world
+    to find more villagers
+  showOnce: 1
 --- !u!43 &1984421548
 Mesh:
   m_ObjectHideFlags: 0
