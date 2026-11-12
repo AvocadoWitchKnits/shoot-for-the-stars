@@ -172485,7 +172485,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: eb9d4320e7f1b704ba1f6c1fe61f633a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 436.68405
+      value: 429.41
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: eb9d4320e7f1b704ba1f6c1fe61f633a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -172493,7 +172493,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: eb9d4320e7f1b704ba1f6c1fe61f633a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 183.28323
+      value: 164.19
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: eb9d4320e7f1b704ba1f6c1fe61f633a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -654945,7 +654945,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CraftingBench
   recipes:
-  - {fileID: 11400000, guid: 2be4f9c44eedef84283f03a61e8bcf6b, type: 2}
+  - {fileID: 11400000, guid: 693ba57aef000a147b7ae75c6537eeba, type: 2}
+  - {fileID: 11400000, guid: e83a1212bf5cd7441ae2bb9387830066, type: 2}
+  - {fileID: 11400000, guid: a1e65f8f29de8a34e8951acda63c209a, type: 2}
   placeItemsAreaBoxCollider: {fileID: 958784383}
   craftedItemSpawnPoint: {fileID: 725958261}
 --- !u!43 &1749453731

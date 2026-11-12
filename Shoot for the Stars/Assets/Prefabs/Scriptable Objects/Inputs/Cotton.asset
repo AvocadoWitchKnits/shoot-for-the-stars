@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Cotton
   m_EditorClassIdentifier: Assembly-CSharp::Item
   image: {fileID: 21300000, guid: 308896420184c0f4681d8325edd5920d, type: 3}
-  prefab: {fileID: 919132149155446097, guid: 742348cbf9a6e4147acf9bc98135e06e, type: 3}
-  heldPrefab: {fileID: 0}
+  prefab: {fileID: 3016259297415547957, guid: 3434fd867769b89419df1c7da7da6dab, type: 3}
+  heldPrefab: {fileID: 3016259297415547957, guid: 3434fd867769b89419df1c7da7da6dab, type: 3}
   type: 0
   actionType: 0
   range: {x: 5, y: 4}

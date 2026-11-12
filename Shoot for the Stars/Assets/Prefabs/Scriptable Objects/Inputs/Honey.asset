@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Honey
   m_EditorClassIdentifier: Assembly-CSharp::Item
   image: {fileID: 21300000, guid: 41d67189cf59128499aa87577e0f691a, type: 3}
-  prefab: {fileID: 919132149155446097, guid: 399c0a653d234214c8256237c4c65415, type: 3}
-  heldPrefab: {fileID: 0}
+  prefab: {fileID: 4017430652555922824, guid: 4a73855e1c7b8db45b05047439d4d4d1, type: 3}
+  heldPrefab: {fileID: 4017430652555922824, guid: 4a73855e1c7b8db45b05047439d4d4d1, type: 3}
   type: 0
   actionType: 0
   range: {x: 5, y: 4}

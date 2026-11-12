@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Water
   m_EditorClassIdentifier: Assembly-CSharp::Item
   image: {fileID: 21300000, guid: dcba80d2ab0b1904fa0b6fcd5a62c8d5, type: 3}
-  prefab: {fileID: 919132149155446097, guid: d185e0755c867b6469e80b39a500812a, type: 3}
-  heldPrefab: {fileID: 0}
+  prefab: {fileID: 4178237230621874848, guid: 430b1360becaea24cba641de2acbf7cc, type: 3}
+  heldPrefab: {fileID: 4178237230621874848, guid: 430b1360becaea24cba641de2acbf7cc, type: 3}
   type: 0
   actionType: 0
   range: {x: 5, y: 4}
