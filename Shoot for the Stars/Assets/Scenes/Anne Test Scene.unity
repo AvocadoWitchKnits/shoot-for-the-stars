@@ -8465,7 +8465,7 @@ PrefabInstance:
     - target: {fileID: 3407743348768973820, guid: 37b5a8640a8c7be4cac8f760ca398a75, type: 3}
       propertyPath: droppedItemPrefab
       value: 
-      objectReference: {fileID: 919132149155446097, guid: d185e0755c867b6469e80b39a500812a, type: 3}
+      objectReference: {fileID: 4178237230621874848, guid: 430b1360becaea24cba641de2acbf7cc, type: 3}
     - target: {fileID: 4257666300351017511, guid: 37b5a8640a8c7be4cac8f760ca398a75, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1987.7004
@@ -518266,6 +518266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PauseMenu
   pauseMenuUI: {fileID: 1380311150}
+  KeyGuidePanel: {fileID: 0}
 --- !u!224 &1380311152
 RectTransform:
   m_ObjectHideFlags: 0
@@ -526112,7 +526113,7 @@ PrefabInstance:
     - target: {fileID: 3407743348768973820, guid: 37b5a8640a8c7be4cac8f760ca398a75, type: 3}
       propertyPath: droppedItemPrefab
       value: 
-      objectReference: {fileID: 919132149155446097, guid: a70572ba3b1bb54498eb5d49dedd1a77, type: 3}
+      objectReference: {fileID: 8583908683845650585, guid: 258c120881134914a8cee504fbbb1344, type: 3}
     - target: {fileID: 4257666300351017511, guid: 37b5a8640a8c7be4cac8f760ca398a75, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1991.11
@@ -528925,7 +528926,7 @@ PrefabInstance:
     - target: {fileID: 3407743348768973820, guid: 37b5a8640a8c7be4cac8f760ca398a75, type: 3}
       propertyPath: droppedItemPrefab
       value: 
-      objectReference: {fileID: 919132149155446097, guid: 633b2d554cf74204199ce19cebc7a8cc, type: 3}
+      objectReference: {fileID: 2304130744597569973, guid: 819313c1df6e3f2458ee3d90c36cbfc4, type: 3}
     - target: {fileID: 4257666300351017511, guid: 37b5a8640a8c7be4cac8f760ca398a75, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1978.645
@@ -774476,7 +774477,7 @@ PrefabInstance:
     - target: {fileID: 3407743348768973820, guid: 37b5a8640a8c7be4cac8f760ca398a75, type: 3}
       propertyPath: droppedItemPrefab
       value: 
-      objectReference: {fileID: 919132149155446097, guid: 547e7c8e7de1de643a80333de1c7a1d2, type: 3}
+      objectReference: {fileID: 6602378941722122880, guid: 0a00898805fe38b4dbedbe9d23739b21, type: 3}
     - target: {fileID: 4257666300351017511, guid: 37b5a8640a8c7be4cac8f760ca398a75, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2002.6
@@ -791275,7 +791276,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 026822ceac7311b4b9bc35f7e2344d0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Keyguide
-  KeyGuidePanel: {fileID: 104847302}
 --- !u!114 &2131746427
 MonoBehaviour:
   m_ObjectHideFlags: 0

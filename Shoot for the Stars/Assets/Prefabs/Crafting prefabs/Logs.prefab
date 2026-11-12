@@ -61,13 +61,13 @@ PrefabInstance:
       addedObject: {fileID: 6247661511939732828}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 72d633bb9e2782d4ba58c31200106cdd, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 9137063501347413718}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 72d633bb9e2782d4ba58c31200106cdd, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 895143686307603026}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 72d633bb9e2782d4ba58c31200106cdd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6809457093749995058}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 72d633bb9e2782d4ba58c31200106cdd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3863396406137341530}
   m_SourcePrefab: {fileID: 100100000, guid: 72d633bb9e2782d4ba58c31200106cdd, type: 3}
 --- !u!1 &2574850570907382121 stripped
 GameObject:
@@ -101,8 +101,34 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!136 &9137063501347413718
-CapsuleCollider:
+--- !u!114 &895143686307603026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2574850570907382121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfca1c5c506e349478f7fd32e2cfc7e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DroppedItem
+  item: {fileID: 0}
+--- !u!114 &6809457093749995058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2574850570907382121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76064658bebb9fc4f90c90db247df3b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QuestPickupItem
+  itemName: 
+--- !u!65 &3863396406137341530
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -119,37 +145,6 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.37565815
-  m_Height: 0.492939
-  m_Direction: 1
+  serializedVersion: 3
+  m_Size: {x: 0.5433693, y: 0.492939, z: 0.7513163}
   m_Center: {x: -0.13516954, y: 0.24760476, z: 0.030866072}
---- !u!114 &895143686307603026
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2574850570907382121}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfca1c5c506e349478f7fd32e2cfc7e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DroppedItem
-  autoStart: 0
-  item: {fileID: 0}
-  pickedUp: 0
-  ShootPoint: {fileID: 0}
---- !u!114 &6809457093749995058
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2574850570907382121}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76064658bebb9fc4f90c90db247df3b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::QuestPickupItem
-  itemName: 

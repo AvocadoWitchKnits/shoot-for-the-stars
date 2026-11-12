@@ -389,24 +389,55 @@ public class FPController : MonoBehaviour
             if (storage != null)
             {
 
-            Debug.Log("Storage component found on: " + storage.gameObject.name);
-            Item storageItem = storage.TakeItem();
+                Debug.Log("Storage component found on: " + storage.gameObject.name);
+                Item storageItem = storage.TakeItem();
 
-            if (storageItem != null)
+                if (storageItem != null)
+                {
+                    Debug.Log("Taking item: " + storageItem.name);
+                    heldItem.EquipItem(storageItem);
+                    InventoryManager.Instance.RefreshStorageUI();
+                }
+                else
+                {
+                    Debug.Log("Chest had no item");
+                }
+
+                return;
+            }
+
+            DroppedItem droppedItem = hit.collider.GetComponentInParent<DroppedItem>();
+
+            QuestPickupItem pickupItem =
+                hit.collider.GetComponentInParent<QuestPickupItem>();
+
+            if (droppedItem != null &&
+                droppedItem.item != null &&
+                pickupItem != null)
             {
-                Debug.Log("Taking item: " + storageItem.name);
-                heldItem.EquipItem(storageItem);
-                InventoryManager.Instance.RefreshStorageUI();
-            }
-            else
-            {
-                Debug.Log("Chest had no item");
+                Item itemToCollect = droppedItem.item;
+
+                pickupItem.SuckIn(
+                    gunPoint,
+                    suckSpeed,
+                    () => heldItem.EquipItem(itemToCollect)
+                );
+
+                if (wandAudio != null)
+                {
+                    wandAudio.Play();
+                }
+
+                if (suctionParticles != null)
+                {
+                    suctionParticles.Play();
+                }
+
+                return;
             }
 
-            return;
-            }
-
-            QuestPickupItem questItem = hit.collider.GetComponent<QuestPickupItem>();
+            QuestPickupItem questItem =
+                hit.collider.GetComponentInParent<QuestPickupItem>();
 
             if (questItem != null)
             {
