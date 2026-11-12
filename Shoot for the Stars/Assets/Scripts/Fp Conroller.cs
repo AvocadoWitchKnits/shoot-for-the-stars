@@ -88,8 +88,6 @@ public class FPController : MonoBehaviour
     {
         HandleMovement();
         HandleLook();
-        InventoryInteract();
-        CraftingInteract();
         if (shootRequested)
         {
             shootRequested = false;
@@ -225,7 +223,7 @@ public class FPController : MonoBehaviour
     {
         if (context.performed)
         {
-            Dialogue();
+            Interact();
         }
     }
 
@@ -379,9 +377,9 @@ public class FPController : MonoBehaviour
         }
         if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
             return;
- 
 
-        Ray ray = new Ray(gunPoint.position, gunPoint.forward);
+
+        Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
         if (Physics.Raycast(ray, out RaycastHit hit, shootRange))
         {
             Storage storage = hit.collider.GetComponentInParent<Storage>();
@@ -420,7 +418,10 @@ public class FPController : MonoBehaviour
                 pickupItem.SuckIn(
                     gunPoint,
                     suckSpeed,
-                    () => heldItem.EquipItem(itemToCollect)
+                    () => 
+                        {
+                            InventoryManager.Instance.AddItem(itemToCollect);
+                        }
                 );
 
                 if (wandAudio != null)
@@ -474,48 +475,56 @@ public class FPController : MonoBehaviour
         }
     }
 
-
-    private void InventoryInteract()
+    private void Interact()
     {
-        Ray ray = new Ray(gunPoint.position, gunPoint.forward);
 
-        if (Physics.Raycast(ray, out RaycastHit hit, shootRange))
+        // If dialogue is already happening,
+        // E should always advance it.
+        if (inDialogue)
         {
-            Storage storage = hit.collider.GetComponentInParent<Storage>();
+            Dialogue();
+            return;
+        }
+
+        Ray ray = new Ray(
+            cameraTransform.position,
+            cameraTransform.forward
+        );
+
+        if (Physics.Raycast(ray, out RaycastHit hit, interactRange))
+        {
+            // STORAGE / JARS
+            Storage storage =
+                hit.collider.GetComponentInParent<Storage>();
 
             if (storage != null)
             {
-                if (Keyboard.current.jKey.wasPressedThisFrame)
+                if (InventoryManager.Instance.isStorageOpened)
                 {
-                    if (InventoryManager.Instance.isStorageOpened)
-                    {
-                        InventoryManager.Instance.CloseStorage(storage);
-                    }
-                    else
-                    {
-                        InventoryManager.Instance.OpenStorage(storage);
-                    }
+                    InventoryManager.Instance.CloseStorage(storage);
                 }
+                else
+                {
+                    InventoryManager.Instance.OpenStorage(storage);
+                }
+
+                return;
             }
-        }
-    }
 
-    private void CraftingInteract()
-    {
-        Ray ray = new Ray(gunPoint.position, gunPoint.forward);
-
-        if (Physics.Raycast(ray, out RaycastHit hit, shootRange))
-        {
-            CauldronCrafting cauldronCrafting =
+            // CRAFTING
+            CauldronCrafting crafting =
                 hit.collider.GetComponentInParent<CauldronCrafting>();
 
-            if (cauldronCrafting != null)
+            if (crafting != null)
             {
-                if (Keyboard.current.cKey.wasPressedThisFrame)
-                {
-                    cauldronCrafting.Interact();
-                }
+                crafting.Interact();
+                return;
             }
         }
+
+        // Nothing else was interacted with,
+        // so try dialogue.
+        Dialogue();
     }
+
 }

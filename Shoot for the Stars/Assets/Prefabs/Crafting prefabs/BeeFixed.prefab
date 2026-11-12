@@ -48,6 +48,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: a0af8f0647a7065489c9ccd4bd2bdc9a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: db28b238db7b5e048a2a06397991cdb1, type: 2}
     - target: {fileID: 919132149155446097, guid: a0af8f0647a7065489c9ccd4bd2bdc9a, type: 3}
       propertyPath: m_Name
       value: BeeFixed
