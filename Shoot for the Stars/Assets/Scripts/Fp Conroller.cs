@@ -526,5 +526,11 @@ public class FPController : MonoBehaviour
         // so try dialogue.
         Dialogue();
     }
-
+    public void OnInventory(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            InventoryManager.Instance.ToggleInventory();
+        }
+    }
 }
