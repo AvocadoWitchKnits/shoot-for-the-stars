@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Cherries
   m_EditorClassIdentifier: Assembly-CSharp::Item
   image: {fileID: 21300000, guid: 767737d5bab7ba4489c849b8dbcad50c, type: 3}
-  prefab: {fileID: 8293592008166219080, guid: 424af460724775b468aceba22eff8242, type: 3}
+  prefab: {fileID: 919132149155446097, guid: a70572ba3b1bb54498eb5d49dedd1a77, type: 3}
+  heldPrefab: {fileID: 0}
   type: 0
   actionType: 0
   range: {x: 5, y: 4}

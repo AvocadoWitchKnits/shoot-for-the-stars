@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Wood
   m_EditorClassIdentifier: Assembly-CSharp::Item
   image: {fileID: 21300000, guid: 933855fa7bdd6fb45a6a9eee34754db5, type: 3}
-  prefab: {fileID: 8293592008166219080, guid: 424af460724775b468aceba22eff8242, type: 3}
+  prefab: {fileID: 919132149155446097, guid: 72d633bb9e2782d4ba58c31200106cdd, type: 3}
+  heldPrefab: {fileID: 0}
   type: 0
   actionType: 0
   range: {x: 5, y: 4}

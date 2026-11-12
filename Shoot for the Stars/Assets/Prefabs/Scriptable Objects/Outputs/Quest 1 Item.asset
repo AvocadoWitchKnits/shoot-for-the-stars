@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Quest 1 Item
   m_EditorClassIdentifier: Assembly-CSharp::Item
   image: {fileID: 0}
-  prefab: {fileID: 0}
+  prefab: {fileID: 919132149155446097, guid: 0fdb285f2bb02a44d90481154bb2d93f, type: 3}
+  heldPrefab: {fileID: 0}
   type: 0
   actionType: 1
   range: {x: 5, y: 4}

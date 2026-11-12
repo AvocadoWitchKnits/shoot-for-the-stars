@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Hibiscus
   m_EditorClassIdentifier: Assembly-CSharp::Item
   image: {fileID: 21300000, guid: 204a00451a691f74c88780732ce1e34b, type: 3}
-  prefab: {fileID: 8293592008166219080, guid: 424af460724775b468aceba22eff8242, type: 3}
+  prefab: {fileID: 919132149155446097, guid: 1b67ed7a26985ff48b355a16bca7887f, type: 3}
+  heldPrefab: {fileID: 0}
   type: 0
   actionType: 0
   range: {x: 5, y: 4}
