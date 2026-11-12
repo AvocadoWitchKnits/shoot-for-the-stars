@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bees
   m_EditorClassIdentifier: Assembly-CSharp::Item
   image: {fileID: 21300000, guid: 9f5652f69cdd06b4daaeb131c6eed0d4, type: 3}
-  prefab: {fileID: 8293592008166219080, guid: 424af460724775b468aceba22eff8242, type: 3}
+  prefab: {fileID: 919132149155446097, guid: a0af8f0647a7065489c9ccd4bd2bdc9a, type: 3}
   heldPrefab: {fileID: 4138604592282695177, guid: 3d3620d9d5465ab4da545a9153956d72, type: 3}
   type: 0
   actionType: 0
