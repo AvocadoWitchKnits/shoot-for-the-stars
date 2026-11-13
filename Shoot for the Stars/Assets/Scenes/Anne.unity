@@ -40603,7 +40603,7 @@ MonoBehaviour:
   hintId: 2
   message: 'Click on jars to get ingredients, then place on the table. When ready,
     press E on the cauldron to brew. '
-  showOnce: 0
+  showOnce: 1
 --- !u!114 &1613905618
 MonoBehaviour:
   m_ObjectHideFlags: 0
