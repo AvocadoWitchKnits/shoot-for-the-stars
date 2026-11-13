@@ -9,6 +9,7 @@ public class InventoryManager : MonoBehaviour
     //[SerializeField] private Item testItem;
     [SerializeField] GameObject storageParent;
     [SerializeField] private InventorySlot storageSlot;
+    [SerializeField] private GameObject inventoryGroup;
 
     private Storage currentStorage;
 
@@ -58,6 +59,14 @@ public class InventoryManager : MonoBehaviour
         if (Keyboard.current.digit7Key.wasPressedThisFrame) ChangeSelectedSlot(6);
         if (Keyboard.current.digit8Key.wasPressedThisFrame) ChangeSelectedSlot(7);
         if (Keyboard.current.digit9Key.wasPressedThisFrame) ChangeSelectedSlot(8);
+    }
+
+    public void ToggleInventory()
+    {
+        if (inventoryGroup == null)
+            return;
+
+        inventoryGroup.SetActive(!inventoryGroup.activeSelf);
     }
     void ChangeSelectedSlot(int newValue)
     {

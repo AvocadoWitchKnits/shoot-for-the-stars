@@ -5,24 +5,26 @@ public class CraftingManager : MonoBehaviour
 {
     public static CraftingManager Instance { get; private set; }
     private List<ItemTypeAndCount> items = new List<ItemTypeAndCount>();
-    public bool CanCraftRecipe(ItemRecipeSO recipeSO)
+    public bool CanCraftRecipe(ItemRecipeSO recipeSO, List<Item> availableItems)
     {
-        items = InventoryManager.Instance.GetAllItems();
-
-        int foundItems = 0;
-        foreach (ItemTypeAndCount neededItemAndCount in recipeSO.input)
+        foreach (ItemTypeAndCount neededItem in recipeSO.input)
         {
-            foreach (ItemTypeAndCount foundItemAndCount in items)
-            {
-                if (foundItemAndCount.item == neededItemAndCount.item && foundItemAndCount.count >= neededItemAndCount.count)
-                {
-                    foundItems++;
-                    break;
-                }
+            int foundCount = 0;
 
+            foreach (Item foundItem in availableItems)
+            {
+                if (foundItem == neededItem.item)
+                {
+                    foundCount++;
+                }
+            }
+
+            if (foundCount < neededItem.count)
+            {
+                return false;
             }
         }
-        return foundItems == recipeSO.input.Length;
+        return true;
     }
 
     private void Awake()

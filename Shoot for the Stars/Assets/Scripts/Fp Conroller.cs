@@ -88,7 +88,6 @@ public class FPController : MonoBehaviour
     {
         HandleMovement();
         HandleLook();
-        InventoryInteract();
         if (shootRequested)
         {
             shootRequested = false;
@@ -224,7 +223,7 @@ public class FPController : MonoBehaviour
     {
         if (context.performed)
         {
-            Dialogue();
+            Interact();
         }
     }
 
@@ -371,11 +370,16 @@ public class FPController : MonoBehaviour
     private void Shoot()
    
     {
+        if (heldItem.IsHoldingItem())
+        {
+            heldItem.Drop();
+            return;
+        }
         if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
             return;
- 
 
-        Ray ray = new Ray(gunPoint.position, gunPoint.forward);
+
+        Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
         if (Physics.Raycast(ray, out RaycastHit hit, shootRange))
         {
             Storage storage = hit.collider.GetComponentInParent<Storage>();
@@ -383,28 +387,63 @@ public class FPController : MonoBehaviour
             if (storage != null)
             {
 
-            Debug.Log("Storage component found on: " + storage.gameObject.name);
-            Item storageItem = storage.TakeItem();
+                Debug.Log("Storage component found on: " + storage.gameObject.name);
+                Item storageItem = storage.TakeItem();
 
-            if (storageItem != null)
+                if (storageItem != null)
+                {
+                    Debug.Log("Taking item: " + storageItem.name);
+                    heldItem.EquipItem(storageItem);
+                    InventoryManager.Instance.RefreshStorageUI();
+                }
+                else
+                {
+                    Debug.Log("Chest had no item");
+                }
+
+                return;
+            }
+
+            DroppedItem droppedItem = hit.collider.GetComponentInParent<DroppedItem>();
+
+            QuestPickupItem pickupItem =
+                hit.collider.GetComponentInParent<QuestPickupItem>();
+
+            if (droppedItem != null &&
+                droppedItem.item != null &&
+                pickupItem != null)
             {
-                Debug.Log("Taking item: " + storageItem.name);
-                heldItem.EquipItem(storageItem);
-                InventoryManager.Instance.RefreshStorageUI();
-            }
-            else
-            {
-                Debug.Log("Chest had no item");
+                Item itemToCollect = droppedItem.item;
+
+                pickupItem.SuckIn(
+                    gunPoint,
+                    suckSpeed,
+                    () => 
+                        {
+                            InventoryManager.Instance.AddItem(itemToCollect);
+                        }
+                );
+
+                if (wandAudio != null)
+                {
+                    wandAudio.Play();
+                }
+
+                if (suctionParticles != null)
+                {
+                    suctionParticles.Play();
+                }
+
+                return;
             }
 
-            return;
-            }
-
-            QuestPickupItem questItem = hit.collider.GetComponent<QuestPickupItem>();
+            QuestPickupItem questItem =
+                hit.collider.GetComponentInParent<QuestPickupItem>();
 
             if (questItem != null)
             {
-                questItem.SuckIn(gunPoint, suckSpeed);
+                questItem.SuckIn(gunPoint, suckSpeed, () => QuestManager.Instance.OnItemPickedUp(questItem.itemName)
+);
 
                 if (wandAudio != null)
                 {
@@ -436,29 +475,62 @@ public class FPController : MonoBehaviour
         }
     }
 
-
-    private void InventoryInteract()
+    private void Interact()
     {
-        Ray ray = new Ray(gunPoint.position, gunPoint.forward);
 
-        if (Physics.Raycast(ray, out RaycastHit hit, shootRange))
+        // If dialogue is already happening,
+        // E should always advance it.
+        if (inDialogue)
         {
-            Storage storage = hit.collider.GetComponentInParent<Storage>();
+            Dialogue();
+            return;
+        }
+
+        Ray ray = new Ray(
+            cameraTransform.position,
+            cameraTransform.forward
+        );
+
+        if (Physics.Raycast(ray, out RaycastHit hit, interactRange))
+        {
+            // STORAGE / JARS
+            Storage storage =
+                hit.collider.GetComponentInParent<Storage>();
 
             if (storage != null)
             {
-                if (Keyboard.current.jKey.wasPressedThisFrame)
+                if (InventoryManager.Instance.isStorageOpened)
                 {
-                    if (InventoryManager.Instance.isStorageOpened)
-                    {
-                        InventoryManager.Instance.CloseStorage(storage);
-                    }
-                    else
-                    {
-                        InventoryManager.Instance.OpenStorage(storage);
-                    }
+                    InventoryManager.Instance.CloseStorage(storage);
                 }
+                else
+                {
+                    InventoryManager.Instance.OpenStorage(storage);
+                }
+
+                return;
             }
+
+            // CRAFTING
+            CauldronCrafting crafting =
+                hit.collider.GetComponentInParent<CauldronCrafting>();
+
+            if (crafting != null)
+            {
+                crafting.Interact();
+                return;
+            }
+        }
+
+        // Nothing else was interacted with,
+        // so try dialogue.
+        Dialogue();
+    }
+    public void OnInventory(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            InventoryManager.Instance.ToggleInventory();
         }
     }
 }
