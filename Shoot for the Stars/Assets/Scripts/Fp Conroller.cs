@@ -122,6 +122,7 @@ public class FPController : MonoBehaviour
     }
 
     // Handles the player's movement and gravity.
+
     public void HandleMovement()
     {
 
@@ -148,6 +149,7 @@ public class FPController : MonoBehaviour
         // Applies the vertical movement for jumping and falling.
         controller.Move(velocity * Time.deltaTime);
     }
+   
 
 
     // Handles the player's camera and body rotation.
