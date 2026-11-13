@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f82c25d6737e49d439a7ad2cf3cedbc3, type: 3}
+  m_Name: Witch Mission recipe
+  m_EditorClassIdentifier: Assembly-CSharp::ItemRecipeSO
+  recipeName: 
+  input:
+  - item: {fileID: 11400000, guid: 0dba55bca34b9664ab8628be4cf2f441, type: 2}
+    count: 1
+  - item: {fileID: 11400000, guid: a28d26e576f5cba4991c6c7b4cc756e7, type: 2}
+    count: 1
+  - item: {fileID: 11400000, guid: f53fcebc69bf0354f84281bca2c0d163, type: 2}
+    count: 1
+  - item: {fileID: 11400000, guid: 0c594b892a006ab4b8dbf4fd5956c15c, type: 2}
+    count: 1
+  - item: {fileID: 11400000, guid: cf35789a7c0ac304a9adda16448c54a8, type: 2}
+    count: 1
+  - item: {fileID: 11400000, guid: 437a0b95531aa4d4c82b40f9c110dd33, type: 2}
+    count: 1
+  - item: {fileID: 11400000, guid: 5c067445463bb8b46a46a68bd6f65682, type: 2}
+    count: 1
+  - item: {fileID: 11400000, guid: 01a1461d3995e80448d781d111b340a7, type: 2}
+    count: 1
+  - item: {fileID: 11400000, guid: b855c6c07c3f2bd48914389c41351d15, type: 2}
+    count: 1
+  output:
+  - item: {fileID: 11400000, guid: 290c22b964909db49b76360a3203cd80, type: 2}
+    count: 0
