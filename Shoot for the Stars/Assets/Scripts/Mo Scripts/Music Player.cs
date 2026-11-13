@@ -14,8 +14,8 @@ public class MusicPlayer : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        instance = this;
-        DontDestroyOnLoad(gameObject);
+        //instance = this;
+        //DontDestroyOnLoad(gameObject);
     }
 }
 
