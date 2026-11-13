@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Collections;
 public class QuestPickupItem : MonoBehaviour
@@ -6,11 +7,14 @@ public class QuestPickupItem : MonoBehaviour
 
 
     private bool isBeingCollected = false;
-    public void SuckIn(Transform target, float speed)
+    private Action onCollected;
+    public void SuckIn(Transform target, float speed, Action collectedAction = null)
     {
         if (isBeingCollected) return;
         isBeingCollected = true;
 
+
+        onCollected = collectedAction;
         Debug.Log("SuckIn started for: " + itemName);
 
         Collider col = GetComponent<Collider>();
@@ -29,8 +33,11 @@ public class QuestPickupItem : MonoBehaviour
             yield return null;
         }
 
-        Debug.Log("Item collected, calling QuestManager for: " + itemName);
-        QuestManager.Instance.OnItemPickedUp(itemName);
+        //Debug.Log("Item collected, calling QuestManager for: " + itemName);
+        //QuestManager.Instance.OnItemPickedUp(itemName);
+
+        onCollected?.Invoke();
+
         Destroy(gameObject);
     }
 }
