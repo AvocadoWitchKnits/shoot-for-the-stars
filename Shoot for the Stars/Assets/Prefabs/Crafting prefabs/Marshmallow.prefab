@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76064658bebb9fc4f90c90db247df3b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuestPickupItem
-  itemName: 
+  itemName: Marshmallow
 --- !u!65 &-3542214091820128836
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -15,11 +15,11 @@ MonoBehaviour:
   recipeName: Quest Item 3 Recipe
   input:
   - item: {fileID: 11400000, guid: a28d26e576f5cba4991c6c7b4cc756e7, type: 2}
-    count: 2
+    count: 1
   - item: {fileID: 11400000, guid: cf35789a7c0ac304a9adda16448c54a8, type: 2}
-    count: 2
+    count: 1
   - item: {fileID: 11400000, guid: 0c594b892a006ab4b8dbf4fd5956c15c, type: 2}
-    count: 2
+    count: 1
   output:
   - item: {fileID: 11400000, guid: 3931211a515692748b9ea0973a9032d5, type: 2}
     count: 1

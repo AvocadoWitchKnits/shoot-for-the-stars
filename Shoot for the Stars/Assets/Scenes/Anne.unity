@@ -13576,15 +13576,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4257666300351017511, guid: 37b5a8640a8c7be4cac8f760ca398a75, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1981.94
+      value: -1967.38
       objectReference: {fileID: 0}
     - target: {fileID: 4257666300351017511, guid: 37b5a8640a8c7be4cac8f760ca398a75, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -102.714
+      value: -101.86
       objectReference: {fileID: 0}
     - target: {fileID: 4257666300351017511, guid: 37b5a8640a8c7be4cac8f760ca398a75, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 166.03
+      value: 113.93
       objectReference: {fileID: 0}
     - target: {fileID: 4257666300351017511, guid: 37b5a8640a8c7be4cac8f760ca398a75, type: 3}
       propertyPath: m_LocalRotation.w
@@ -16697,7 +16697,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f7db2a77fc0f6954b8804b2987780e91, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.65
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f7db2a77fc0f6954b8804b2987780e91, type: 3}
       propertyPath: m_LocalPosition.z
@@ -34851,7 +34851,7 @@ Transform:
   m_GameObject: {fileID: 1178697082}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.181, y: 0.082, z: 0.0211}
+  m_LocalPosition: {x: 0.065, y: 0.045, z: 0.028}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -58755,7 +58755,7 @@ Transform:
   m_GameObject: {fileID: 1875186141}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.063, z: 0}
+  m_LocalPosition: {x: 0.35, y: 1.063, z: -1.85}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -64138,7 +64138,7 @@ Transform:
   m_GameObject: {fileID: 1898750698}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.61260986, y: 0.11041021, z: 2.0856934}
+  m_LocalPosition: {x: 20.27, y: 1.641, z: 5.08}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -65905,6 +65905,10 @@ MonoBehaviour:
     text: That bookmark meant so much to my family and I.
   - SpeakerName: NPC 2
     text: I hope i'll be able to smile again soon
+  - SpeakerName: NPC 2
+    text: 'Your mission is complete when you have crafted all three precious items. '
+  - SpeakerName: NPC 2
+    text: 'Thank you for helping our village and playing our game. '
 --- !u!136 &1968795078
 CapsuleCollider:
   m_ObjectHideFlags: 0
